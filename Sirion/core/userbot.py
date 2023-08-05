@@ -2,7 +2,7 @@ import sys
 import config
 from pyrogram import Client
 from Sirion.logging import LOGGER
-from Sirion import BOT_NAME
+from Sirion import BOT_MENTION
 
 
 assistants = []
@@ -45,7 +45,7 @@ class Userbot(Client):
             LOGGER(__name__).info(f"Assistant Started as {self.one.name}")
             try:
                 await self.one.send_message(
-                    config.LOG_GROUP_ID, f"**» {BOT_NAME} ᴀssɪsᴛᴀɴᴛ ᴏɴᴇ sᴛᴀʀᴛᴇᴅ :**\n\n❄ ɴᴀᴍᴇ : {self.one.name}\n✨ ɪᴅ : `{self.one.id}`\n💫 ᴜsᴇʀɴᴀᴍᴇ : @{self.one.username}"
+                    config.LOG_GROUP_ID, f"**» {BOT_MENTION} ᴀssɪsᴛᴀɴᴛ ᴏɴᴇ sᴛᴀʀᴛᴇᴅ :**\n\n❄ ɴᴀᴍᴇ : {self.one.name}\n✨ ɪᴅ : `{self.one.id}`\n💫 ᴜsᴇʀɴᴀᴍᴇ : @{self.one.username}"
                 )
             except:
                 LOGGER(__name__).error(
@@ -71,7 +71,7 @@ class Userbot(Client):
                 self.two.name = get_me.first_name
             try:
                 await self.two.send_message(
-                    config.LOG_GROUP_ID, f"**» {BOT_NAME} ᴀssɪsᴛᴀɴᴛ ᴛᴡᴏ sᴛᴀʀᴛᴇᴅ :**\n\n❄ ɴᴀᴍᴇ : {self.two.name}\n✨ ɪᴅ : `{self.two.id}`\n💫 ᴜsᴇʀɴᴀᴍᴇ : @{self.two.username}"
+                    config.LOG_GROUP_ID, f"**» {BOT_MENTION} ᴀssɪsᴛᴀɴᴛ ᴛᴡᴏ sᴛᴀʀᴛᴇᴅ :**\n\n❄ ɴᴀᴍᴇ : {self.two.name}\n✨ ɪᴅ : `{self.two.id}`\n💫 ᴜsᴇʀɴᴀᴍᴇ : @{self.two.username}"
                 )
             except:
                 LOGGER(__name__).error(
