@@ -1,12 +1,9 @@
 import asyncio
-
 from strings import get_string
-from config import MUSIC_BOT_NAME, PLAYLIST_IMG_URL, PRIVATE_BOT_MODE, adminlist
-
+from config import PLAYLIST_IMG_URL, PRIVATE_BOT_MODE, adminlist
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import ChatAdminRequired, UserAlreadyParticipant, UserNotParticipant
-
-from Sirion import YouTube, app, userbot
+from Sirion import YouTube, app, userbot, BOT_MENTION as MUSIC_BOT_NAME
 from Sirion.misc import SUDOERS
 from Sirion.utils.database import (get_cmode, get_lang,
                                        get_playmode, get_playtype,
@@ -24,7 +21,7 @@ def PlayWrapper(command):
         if await is_maintenance() is False:
             if message.from_user.id not in SUDOERS:
                 return await message.reply_text(
-                    "» ʙᴏᴛ ɪs ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ ғᴏʀ sᴏᴍᴇ ᴛɪᴍᴇ, ᴩʟᴇᴀsᴇ ᴠɪsɪᴛ [sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ](https://t.me/AltronChats) ᴛᴏ ᴋɴᴏᴡ ᴛʜᴇ ʀᴇᴀsᴏɴ..."
+                    "» ʙᴏᴛ ɪs ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ ғᴏʀ sᴏᴍᴇ ᴛɪᴍᴇ"
                 )
         if PRIVATE_BOT_MODE == str(True):
             if not await is_served_private_chat(message.chat.id):
@@ -70,15 +67,7 @@ def PlayWrapper(command):
                     caption=_["playlist_1"],
                     reply_markup=InlineKeyboardMarkup(buttons),
                 )
-        if message.sender_chat:
-            upl = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton(text="How to fix this ?", callback_data="AnonymousAdmin")
-                    ]
-                ]
-            )
-            return await message.reply_text(_["general_4"], reply_markup=upl)
+
         if message.command[0][0] == "c":
             chat_id = await get_cmode(message.chat.id)
             if chat_id is None:
@@ -162,7 +151,7 @@ def PlayWrapper(command):
                         )
                         if invitelink.startswith("https://t.me/+"):
                             invitelink = invitelink.replace("https://t.me/+", "https://t.me/joinchat/")
-                        await asyncio.sleep(1)
+                        await asyncio.sleep(0.5)
                         await userbot.join_chat(invitelink)
                         await m.edit_text(_["call_6"].format(MUSIC_BOT_NAME))
                     except UserAlreadyParticipant:
