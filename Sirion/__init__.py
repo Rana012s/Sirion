@@ -40,7 +40,3 @@ BOT_MENTION = ""
 BOT_NAME = ""
 BOT_USERNAME = ""
 
-ID = 0
-NAME = ""
-USERNAME = ""
-MENTION = ""
