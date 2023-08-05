@@ -1,14 +1,18 @@
 from strings import get_command
-
 from pyrogram import filters
 from pyrogram.types import Message
-
 from Sirion import app
 from Sirion.misc import SUDOERS
 from Sirion.utils.decorators import language
 from Sirion.utils.database.memorydatabase import get_active_chats, get_active_video_chats
 
-# Commands
+__MODULE__ = "active"
+__HELP__ = """
+/activevoice - get active voice chats
+/activevideo - get active video chats
+/activechats - get active chat list
+"""
+
 ACTIVEVC_COMMAND = get_command("ACTIVEVC_COMMAND")
 ACTIVEVIDEO_COMMAND = get_command("ACTIVEVIDEO_COMMAND")
 FAST_AC = get_command("FAST_AC")
