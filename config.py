@@ -40,6 +40,16 @@ SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/TeamSirion")
 
 SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/TheDarFrekerz")
 
+HELPABLE = {}
+
+BOT_ID = 0
+
+BOT_MENTION = ""
+
+BOT_NAME = ""
+
+BOT_USERNAME = ""
+
 SUPPORT_HEHE = SUPPORT_GROUP.split("me/")[1]
 
 AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", "False")
