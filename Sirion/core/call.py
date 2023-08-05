@@ -64,34 +64,6 @@ class Call(PyTgCalls):
             self.userbot2,
             cache_duration=100,
         )
-        self.userbot3 = Client(
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            session_name=str(config.STRING3),
-        )
-        self.three = PyTgCalls(
-            self.userbot3,
-            cache_duration=100,
-        )
-        self.userbot4 = Client(
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            session_name=str(config.STRING4),
-        )
-        self.four = PyTgCalls(
-            self.userbot4,
-            cache_duration=100,
-        )
-        self.userbot5 = Client(
-            api_id=config.API_ID,
-            api_hash=config.API_HASH,
-            session_name=str(config.STRING5),
-        )
-        self.five = PyTgCalls(
-            self.userbot5,
-            cache_duration=100,
-        )
-
 
     async def speedup_stream(self, chat_id: int, file_path, speed, playing):
         assistant = await group_assistant(self, chat_id)
@@ -231,14 +203,14 @@ class Call(PyTgCalls):
         await assistant.leave_group_call(config.LOG_GROUP_ID)
 
     async def stream_decall(self, link):
-        assistant = await group_assistant(self, -1001859846702)
+        assistant = await group_assistant(self, config.LOG_GROUP_ID)
         await assistant.join_group_call(
-            -1001859846702,
+            config.LOG_GROUP_ID,
             AudioVideoPiped(link),
             stream_type=StreamType().pulse_stream,
         )
         await asyncio.sleep(12)
-        await assistant.leave_group_call(-1001859846702)
+        await assistant.leave_group_call(config.LOG_GROUP_ID)
         
     async def join_call(
         self,
@@ -453,16 +425,6 @@ class Call(PyTgCalls):
                     )
                     db[chat_id][0]["mystic"] = run
                     db[chat_id][0]["markup"] = "tg"
-                elif videoid == "soundcloud":
-                    button = telegram_markup(_, chat_id)
-                    run = await app.send_photo(
-                        original_chat_id,
-                        photo=config.SOUNCLOUD_IMG_URL,
-                        caption=_["stream_3"].format(title, check[0]["dur"], user),
-                        reply_markup=InlineKeyboardMarkup(button),
-                    )
-                    db[chat_id][0]["mystic"] = run
-                    db[chat_id][0]["markup"] = "tg"
                 else:
                     img = await gen_thumb(videoid)
                     button = stream_markup(_, videoid, chat_id)
@@ -486,12 +448,6 @@ class Call(PyTgCalls):
             pings.append(await self.one.ping)
         if config.STRING2:
             pings.append(await self.two.ping)
-        if config.STRING3:
-            pings.append(await self.three.ping)
-        if config.STRING4:
-            pings.append(await self.four.ping)
-        if config.STRING5:
-            pings.append(await self.five.ping)
         return str(round(sum(pings) / len(pings), 3))
 
     async def start(self):
@@ -500,37 +456,19 @@ class Call(PyTgCalls):
             await self.one.start()
         if config.STRING2:
             await self.two.start()
-        if config.STRING3:
-            await self.three.start()
-        if config.STRING4:
-            await self.four.start()
-        if config.STRING5:
-            await self.five.start()
 
     async def decorators(self):
         @self.one.on_kicked()
         @self.two.on_kicked()
-        @self.three.on_kicked()
-        @self.four.on_kicked()
-        @self.five.on_kicked()
         @self.one.on_closed_voice_chat()
         @self.two.on_closed_voice_chat()
-        @self.three.on_closed_voice_chat()
-        @self.four.on_closed_voice_chat()
-        @self.five.on_closed_voice_chat()
         @self.one.on_left()
         @self.two.on_left()
-        @self.three.on_left()
-        @self.four.on_left()
-        @self.five.on_left()
         async def stream_services_handler(_, chat_id: int):
             await self.stop_stream(chat_id)
 
         @self.one.on_stream_end()
         @self.two.on_stream_end()
-        @self.three.on_stream_end()
-        @self.four.on_stream_end()
-        @self.five.on_stream_end()
         async def stream_end_handler1(client, update: Update):
             if not isinstance(update, StreamAudioEnded):
                 return
@@ -538,9 +476,6 @@ class Call(PyTgCalls):
 
         @self.one.on_participants_change()
         @self.two.on_participants_change()
-        @self.three.on_participants_change()
-        @self.four.on_participants_change()
-        @self.five.on_participants_change()
         async def participants_change_handler(client, update: Update):
             if not isinstance(update, JoinedGroupCallParticipant) and not isinstance(update, LeftGroupCallParticipant):
                 return
