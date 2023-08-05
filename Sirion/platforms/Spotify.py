@@ -1,6 +1,5 @@
 import re
 import spotipy
-
 from spotipy.oauth2 import SpotifyClientCredentials
 from youtubesearchpython.__future__ import VideosSearch
 from config import SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET
