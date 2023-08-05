@@ -1,4 +1,5 @@
 from config import SUPPORT_HEHE
+from Sirion import *
 from pyrogram.types import InlineKeyboardButton
 
 
