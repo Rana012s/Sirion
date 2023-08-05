@@ -176,3 +176,6 @@ class TeleAPI:
             return False
         lyrical.pop(mystic.message_id)
         return True
+
+
+Telegram = TeleAPI()
