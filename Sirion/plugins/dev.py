@@ -3,17 +3,21 @@ import re
 import sys
 import traceback
 import subprocess
-
 from time import time
 from io import StringIO
 from inspect import getfullargspec
-
 from config import OWNER_ID
 from Sirion import app
-
 from pyrogram import filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
+
+__MODULE__ = "dev"
+__HELP__ = """
+/sh - execute command
+
+/eval - execute command
+"""
 
 async def aexec(code, client, message):
     exec(
