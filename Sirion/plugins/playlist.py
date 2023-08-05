@@ -1,8 +1,6 @@
 from os import remove
-
 from strings import get_command
 from config import BANNED_USERS, SERVER_PLAYLIST_LIMIT
-
 from pykeyboard import InlineKeyboard
 from pyrogram import filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
@@ -16,7 +14,15 @@ from Sirion.utils.inline.playlist import botplaylist_markup, get_playlist_markup
 from Sirion.utils.database import delete_playlist, get_playlist, get_playlist_names, save_playlist
 
 
-# Command
+__MODULE__ = "playlist"
+__HELP__ = """
+/playlist : ᴄʜᴇᴄᴋ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴩʟᴀʏʟɪsᴛ ᴏɴ sᴇʀᴠᴇʀs.
+
+/deleteplaylist : ᴅᴇʟᴇᴛᴇ ᴀɴʏ sᴀᴠᴇᴅ ᴛʀᴀᴄᴋ ɪɴ ʏᴏᴜʀ ᴩʟᴀʏʟɪsᴛ.
+
+/play : sᴛᴀʀᴛs ᴩʟᴀʏɪɴɢ ғʀᴏᴍ ʏᴏᴜʀ sᴀᴠᴇᴅ ᴩʟᴀʏʟɪsᴛ ᴏɴ sᴇʀᴠᴇʀ
+"""
+
 PLAYLIST_COMMAND = get_command("PLAYLIST_COMMAND")
 DELETEPLAYLIST_COMMAND = get_command("DELETEPLAYLIST_COMMAND")
 
