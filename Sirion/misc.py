@@ -2,7 +2,6 @@ import time
 import config
 import socket
 import heroku3
-
 from pyrogram import filters
 from Sirion.logging import LOGGER
 from Sirion.core.mongo import pymongodb
@@ -11,8 +10,6 @@ from Sirion.core.mongo import pymongodb
 SUDOERS = filters.user()
 
 HAPP = None
-
-_boot_ = time.time()
 
 
 def is_heroku():
@@ -39,7 +36,7 @@ XCB = [
 def dbb():
     global db
     db = {}
-    LOGGER(__name__).info(f"Database Loaded.")
+    LOGGER(__name__).info(f"Database Loaded")
 
 
 def sudo():
@@ -59,7 +56,7 @@ def sudo():
     if sudoers:
         for x in sudoers:
             SUDOERS.add(x)
-    LOGGER(__name__).info("Sudo Users Loaded Successfully.")
+    LOGGER(__name__).info("Sudo Users Loaded Successfully")
 
 
 def heroku():
