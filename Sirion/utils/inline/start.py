@@ -27,7 +27,7 @@ def private_panel(BOT_USERNAME):
             )
         ],
         [
-            InlineKeyboardButton(text="˹ᴜᴘᴅᴀᴛᴇꜱ˼", url="https://t.me/TheAltron"),
+            InlineKeyboardButton(text="˹ᴜᴘᴅᴀᴛᴇꜱ˼", url="https://t.me/TeamSirion"),
             InlineKeyboardButton(text="˹ꜱᴜᴘᴘᴏʀᴛ˼", url=f"https://t.me/{SUPPORT_HEHE}")
         ],
         [
