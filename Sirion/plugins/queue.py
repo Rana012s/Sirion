@@ -1,14 +1,12 @@
 import asyncio
-
 from config import (
-    BANNED_USERS, MUSIC_BOT_NAME, TELEGRAM_AUDIO_URL,
-    TELEGRAM_VIDEO_URL, STREAM_IMG_URL, SOUNCLOUD_IMG_URL
+    BANNED_USERS, TELEGRAM_AUDIO_URL,
+    TELEGRAM_VIDEO_URL, STREAM_IMG_URL
 )
+from Sirion import BOT_MENTION as MUSIC_BOT_NAME
 from strings import get_command
-
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
-
 from Sirion import app, YouTube
 from Sirion.misc import db
 from Sirion.utils.thumbnails import gen_thumb
@@ -68,8 +66,6 @@ async def queue_com(client, message: Message, _):
     else:
         if videoid == "telegram":
             IMAGE = TELEGRAM_AUDIO_URL if typo == "Audio" else TELEGRAM_VIDEO_URL
-        elif videoid == "soundcloud":
-            IMAGE = SOUNCLOUD_IMG_URL
         else:
             IMAGE = await gen_thumb(videoid)
 
@@ -177,8 +173,6 @@ async def queue_back(client, CallbackQuery: CallbackQuery, _):
                 if typo == "Audio"
                 else TELEGRAM_VIDEO_URL
             )
-        elif videoid == "soundcloud":
-            IMAGE = SOUNCLOUD_IMG_URL
         else:
             IMAGE = await gen_thumb(videoid)
 
