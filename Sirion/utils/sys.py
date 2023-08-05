@@ -1,9 +1,7 @@
 import time
 import psutil
-
-from Sirion.misc import _boot_
+from Sirion import boot
 from Sirion.utils.formatters import get_readable_time
-
 
 
 async def bot_sys_stats():
