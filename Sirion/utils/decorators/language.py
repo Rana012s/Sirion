@@ -1,5 +1,4 @@
 from strings import get_string
-
 from Sirion.misc import SUDOERS
 from Sirion.utils.database import get_lang, is_commanddelete_on, is_maintenance
 
