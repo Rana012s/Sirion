@@ -52,7 +52,7 @@ async def stats_global(client, message: Message, _):
     )
     await message.reply_photo(
         photo=config.STATS_IMG_URL,
-        caption=_["gstats_11"].format(config.MUSIC_BOT_NAME),
+        caption=_["gstats_11"].format(MUSIC_BOT_NAME),
         reply_markup=upl,
     )
 
@@ -181,7 +181,7 @@ async def top_users_ten(client, CallbackQuery: CallbackQuery, _):
             temp = (
                 _["gstats_4"].format(
                     queries,
-                    config.MUSIC_BOT_NAME,
+                    MUSIC_BOT_NAME,
                     len(stats),
                     total_count,
                     limit,

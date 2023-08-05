@@ -15,8 +15,7 @@ from Sirion.utils.database import (add_served_chat,
                                        get_served_users,
                                        blacklisted_chats,
                                        get_assistant, get_lang,
-                                       get_userss, is_on_off,
-                                       is_served_private_chat)
+                                       get_userss, is_on_off)
 
 from Sirion.utils.decorators.language import LanguageStart
 from Sirion.utils.inline import help_pannel, private_panel, start_pannel
@@ -213,14 +212,7 @@ async def testbot(client, message: Message, _):
 @app.on_message(filters.new_chat_members, group=2)
 async def welcome(client, message: Message):
     chat_id = message.chat.id
-    if config.PRIVATE_BOT_MODE == str(True):
-        if not await is_served_private_chat(message.chat.id):
-            await message.reply_text(
-                "**ᴩʀɪᴠᴀᴛᴇ ᴍᴜsɪᴄ ʙᴏᴛ**\n\nᴏɴʟʏ ꜰᴏʀ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴄʜᴀᴛꜱ ꜰʀᴏᴍ ᴛʜᴇ ᴏᴡɴᴇʀ. ᴀꜱᴋ ᴍʏ ᴏᴡɴᴇʀ ᴛᴏ ᴀʟʟᴏᴡ ʏᴏᴜʀ ᴄʜᴀᴛ ꜰɪʀꜱᴛ."
-            )
-            return await app.leave_chat(message.chat.id)
-    else:
-        await add_served_chat(chat_id)
+    await add_served_chat(chat_id)
     for member in message.new_chat_members:
         try:
             language = await get_lang(message.chat.id)
