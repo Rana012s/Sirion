@@ -2,26 +2,24 @@ import config
 import psutil
 import asyncio
 import platform
-
 from sys import version as pyver
-
 from strings import get_command
-from config import BANNED_USERS, MUSIC_BOT_NAME
-
+from config import BANNED_USERS
 from pyrogram import __version__ as pyrover
 from pyrogram import filters
 from pyrogram.errors import MessageIdInvalid
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 from pytgcalls.__version__ import __version__ as pytgver
-
-from Sirion import YouTube, app
+from Sirion import YouTube, app, BOT_NAME as MUSIC_BOT_NAME
 from Sirion.plugins import ALL_MODULES
 from Sirion.core.userbot import assistants
 from Sirion.misc import SUDOERS, pymongodb
+
 from Sirion.utils.database import (
     get_global_tops, get_particulars, get_queries,
     get_served_chats, get_served_users, get_sudoers,
     get_top_chats, get_topp_users)
+
 from Sirion.utils.decorators.language import language, languageCB
 from Sirion.utils.inline.stats import (
     back_stats_buttons, back_stats_markup, get_stats_markup,
@@ -30,7 +28,13 @@ from Sirion.utils.inline.stats import (
 
 loop = asyncio.get_running_loop()
 
-# Commands
+__MODULE__ = "stats"
+__HELP__ = """
+/stats : get user or chat stats
+
+/gstats : get global statics
+"""
+
 GSTATS_COMMAND = get_command("GSTATS_COMMAND")
 STATS_COMMAND = get_command("STATS_COMMAND")
 
@@ -170,7 +174,7 @@ async def top_users_ten(client, CallbackQuery: CallbackQuery, _):
                 details = stats.get(items)
                 title = (details["title"][:35]).title()
                 if items == "telegram":
-                    msg += f"🍒 [ᴛᴇʟᴇɢʀᴀᴍ ᴍᴇᴅɪᴀ](https://t.me/AltronChats) ** ᴩʟᴀʏᴇᴅ {count} ᴛɪᴍᴇs**\n\n"
+                    msg += f"🍒 [ᴛᴇʟᴇɢʀᴀᴍ ᴍᴇᴅɪᴀ] ** ᴩʟᴀʏᴇᴅ {count} ᴛɪᴍᴇs**\n\n"
                 else:
                     msg += f"📌 [{title}](https://www.youtube.com/watch?v={items}) ** ᴩʟᴀʏᴇᴅ {count} ᴛɪᴍᴇs**\n\n"
 
@@ -404,14 +408,14 @@ async def back_buttons(client, CallbackQuery, _):
         )
         med = InputMediaPhoto(
             media=config.STATS_IMG_URL,
-            caption=_["gstats_10"].format(config.MUSIC_BOT_NAME),
+            caption=_["gstats_10"].format(MUSIC_BOT_NAME),
         )
         try:
             await CallbackQuery.edit_message_media(media=med, reply_markup=upl)
         except MessageIdInvalid:
             await CallbackQuery.message.reply_photo(
                 photo=config.STATS_IMG_URL,
-                caption=_["gstats_10"].format(config.MUSIC_BOT_NAME),
+                caption=_["gstats_10"].format(MUSIC_BOT_NAME),
                 reply_markup=upl,
             )
     if command == "GETSTATS":
@@ -419,12 +423,12 @@ async def back_buttons(client, CallbackQuery, _):
             _,
             True if CallbackQuery.from_user.id in SUDOERS else False,
         )
-        med = InputMediaPhoto(media=config.STATS_IMG_URL, caption=_["gstats_11"].format(config.MUSIC_BOT_NAME))
+        med = InputMediaPhoto(media=config.STATS_IMG_URL, caption=_["gstats_11"].format(MUSIC_BOT_NAME))
         try:
             await CallbackQuery.edit_message_media(media=med, reply_markup=upl)
         except MessageIdInvalid:
             await CallbackQuery.message.reply_photo(
                 photo=config.STATS_IMG_URL,
-                caption=_["gstats_11"].format(config.MUSIC_BOT_NAME),
+                caption=_["gstats_11"].format(MUSIC_BOT_NAME),
                 reply_markup=upl,
             )
