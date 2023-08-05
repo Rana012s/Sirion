@@ -1,15 +1,13 @@
 from config import BANNED_USERS
 from strings import get_command
-
 from pyrogram import filters
 from pyrogram.types import Message, InlineKeyboardMarkup
-
 from Sirion import app
 from Sirion.utils.decorators import language
 from Sirion.utils.inline.settings import playmode_users_markup
 from Sirion.utils.database import get_playmode, get_playtype, is_nonadmin_chat
 
-### Commands
+
 PLAYMODE_COMMAND = get_command("PLAYMODE_COMMAND")
 
 
