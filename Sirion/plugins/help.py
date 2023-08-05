@@ -1,102 +1,98 @@
-from typing import Union
-
-from pyrogram import filters, types
-from pyrogram.types import InlineKeyboardMarkup, Message
-
-from strings import get_command, get_string, helpers
-from config import BANNED_USERS, SUPPORT_HEHE, START_IMG_URL
-
-from Sirion import app
-from Sirion.misc import SUDOERS
-from Sirion.utils import help_pannel
-from Sirion.utils.database import get_lang, is_commanddelete_on
-from Sirion.utils.decorators.language import LanguageStart, languageCB
-from Sirion.utils.inline.help import help_back_markup, private_help_panel
+import re
+from pyrogram import filters
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from Sirion import *
+from config import *
+from Sirion.utils.eqline import page_load
+from Sirion import HELPABLE, BOT_MENTION, app as bot
 
 
-### Command
-HELP_COMMAND = get_command("HELP_COMMAND")
+@bot.on_callback_query(filters.regex(r"help_(.*?)"))
+async def help_button(_, query):
+    mod_match = re.match(r"help_module\((.+?)\)", query.data)
+    prev_match = re.match(r"help_prev\((.+?)\)", query.data)
+    next_match = re.match(r"help_next\((.+?)\)", query.data)
+    TEXT = f"""
+**ʜᴇʏ ʙᴀʙʏ {query.from_user.mention} ɪ ᴀᴍ {BOT_MENTION}
+
+ɪ ᴀᴍ ᴀ sᴜᴘᴇʀғᴀsᴛ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴜsɪᴄ ʙᴏᴛ ᴡɪᴛʜ ᴍᴀɴʏ ᴜsᴇғᴜʟ & ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs**
+"""
+    if mod_match:
+        module = mod_match.group(1)
+        text = (
+            "{} **{}**:\n".format(
+                "ʜᴇʀᴇ ɪs ᴛʜᴇ ʜᴇʟᴘ ғᴏʀ", HELPABLE[module].__MODULE__
+            )
+            + HELPABLE[module].__HELP__
+        )
+        key = InlineKeyboardMarkup(
+            [
+                [
+                    InlineKeyboardButton(text="• ʙᴀᴄᴋ •", callback_data="back"),
+                    InlineKeyboardButton(text="• close •", callback_data="close")
+                ]
+            ]
+        )
+        await query.message.edit(
+            text=text,
+            reply_markup=key
+        )
+    elif prev_match:
+        current_page = int(prev_match.group(1))
+        buttons = page_load(current_page - 1, HELPABLE, "help")
+        await query.message.edit(
+            TEXT,
+            reply_markup=InlineKeyboardMarkup(buttons)
+        )
+    elif next_match:
+        current_page = int(next_match.group(1))
+        buttons = page_load(current_page + 1, HELPABLE, "help")
+        await query.message.edit(
+            TEXT,
+            reply_markup=InlineKeyboardMarkup(buttons)
+        )
 
 
-@app.on_message(
-    filters.command(HELP_COMMAND)
-    & filters.private
-    & ~filters.edited
-    & ~BANNED_USERS
-)
-@app.on_callback_query(filters.regex("settings_back_helper") & ~BANNED_USERS)
-async def helper_private(client: app, update: Union[types.Message, types.CallbackQuery]):
-    is_callback = isinstance(update, types.CallbackQuery)
-    if is_callback:
-        try:
-            await update.answer()
-        except:
-            pass
-        chat_id = update.message.chat.id
-        language = await get_lang(chat_id)
-        _ = get_string(language)
-        keyboard = help_pannel(_, True)
-        await update.edit_message_text(_["help_1"].format(SUPPORT_HEHE), reply_markup=keyboard)
-    else:
-        chat_id = update.chat.id
-        if await is_commanddelete_on(update.chat.id):
-            try:
-                await update.delete()
-            except:
-                pass
-        language = await get_lang(chat_id)
-        _ = get_string(language)
-        keyboard = help_pannel(_)
-        await update.reply_photo(photo=START_IMG_URL, caption=_["help_1"].format(SUPPORT_HEHE), reply_markup=keyboard)
+@bot.on_callback_query(filters.regex("close"))
+async def close(_, query):
+    await query.message.delete()
 
 
-@app.on_message(
-    filters.command(HELP_COMMAND)
-    & filters.group
-    & ~filters.edited
-    & ~BANNED_USERS
-)
-@LanguageStart
-async def help_com_group(client, message: Message, _):
-    keyboard = private_help_panel(app.username)
-    await message.reply_text(_["help_2"], reply_markup=InlineKeyboardMarkup(keyboard))
+@bot.on_callback_query(filters.regex("home"))
+async def home(_, query):
+    buttons = BUTT
+    TEXT = f"""
+**ʜᴇʏ ʙᴀʙʏ {query.from_user.mention} ɪ ᴀᴍ {BOT_MENTION}
+
+ɪ ᴀᴍ ᴀ sᴜᴘᴇʀғᴀsᴛ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴜsɪᴄ ʙᴏᴛ ᴡɪᴛʜ ᴍᴀɴʏ ᴜsᴇғᴜʟ & ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs**
+"""
+    await query.message.edit(
+          TEXT,
+          reply_markup=InlineKeyboardMarkup(buttons)
+    )
 
 
-@app.on_callback_query(filters.regex("help_callback") & ~BANNED_USERS)
-@languageCB
-async def helper_cb(client, CallbackQuery, _):
-    callback_data = CallbackQuery.data.strip()
-    cb = callback_data.split(None, 1)[1]
-    keyboard = help_back_markup(_)
-    if cb == "hb9":
-        if CallbackQuery.from_user.id not in SUDOERS:
-            return await CallbackQuery.answer("This button is only for sudoers.", show_alert=True)
-        else:
-            await CallbackQuery.edit_message_text(helpers.HELP_9, reply_markup=keyboard)
-            return await CallbackQuery.answer()
-    try:
-        await CallbackQuery.answer()
-    except:
-        pass
-    if cb == "hb1":
-        await CallbackQuery.edit_message_text(helpers.HELP_1, reply_markup=keyboard)
-    elif cb == "hb2":
-        await CallbackQuery.edit_message_text(helpers.HELP_2, reply_markup=keyboard)
-    elif cb == "hb3":
-        await CallbackQuery.edit_message_text(helpers.HELP_3, reply_markup=keyboard)
-    elif cb == "hb4":
-        await CallbackQuery.edit_message_text(helpers.HELP_4, reply_markup=keyboard)
-    elif cb == "hb5":
-        await CallbackQuery.edit_message_text(helpers.HELP_5, reply_markup=keyboard)
-    elif cb == "hb6":
-        await CallbackQuery.edit_message_text(helpers.HELP_6, reply_markup=keyboard)
-    elif cb == "hb7":
-        await CallbackQuery.edit_message_text(helpers.HELP_7, reply_markup=keyboard)
-    elif cb == "hb8":
-        await CallbackQuery.edit_message_text(helpers.HELP_8, reply_markup=keyboard)
-    elif cb == "hb10":
-        await CallbackQuery.edit_message_text(helpers.HELP_10, reply_markup=keyboard)
-    elif cb == "hb11":
-        await CallbackQuery.edit_message_text(helpers.HELP_11, reply_markup=keyboard)
-    elif cb == "hb12":
-        await CallbackQuery.edit_message_text(helpers.HELP_12, reply_markup=keyboard)
+@bot.on_callback_query(filters.regex("back"))
+async def back(_, query):
+    buttons = page_load(0, HELPABLE, "help")
+    TEXT = f"""
+**ʜᴇʏ ʙᴀʙʏ {query.from_user.mention} ɪ ᴀᴍ {BOT_MENTION}
+
+ɪ ᴀᴍ ᴀ sᴜᴘᴇʀғᴀsᴛ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴜsɪᴄ ʙᴏᴛ ᴡɪᴛʜ ᴍᴀɴʏ ᴜsᴇғᴜʟ & ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs**
+"""
+    await query.message.edit(
+          TEXT,
+          reply_markup=InlineKeyboardMarkup(buttons)
+    )
+
+
+@bot.on_message(filters.command(["help"]))
+async def help_cmd(c, m):
+    TEXT = f"""
+**ʜᴇʟʟᴏ {m.from_user.mention} ɪ ᴀᴍ {BOT_MENTION}**
+
+**ɪ ᴀᴍ ᴀ sᴜᴘᴇʀғᴀsᴛ ᴛᴇʟᴇɢʀᴀᴍ ᴍᴜsɪᴄ ʙᴏᴛ ᴡɪᴛʜ ᴍᴀɴʏ ᴜsᴇғᴜʟ & ᴀᴡᴇsᴏᴍᴇ ғᴇᴀᴛᴜʀᴇs**
+"""
+    key = InlineKeyboardMarkup(page_load(0, HELPABLE, "help"))
+    await c.send_message(m.chat.id, TEXT, reply_markup=key)
+
