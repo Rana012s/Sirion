@@ -1,10 +1,7 @@
 from datetime import datetime
-
 from strings import get_command
-
 from pyrogram import filters
 from pyrogram.types import Message
-
 from Sirion import app
 from Sirion.misc import SUDOERS
 from Sirion.core.call import AltCall
@@ -12,7 +9,16 @@ from Sirion.utils import bot_sys_stats
 from Sirion.utils.decorators.language import language
 
 
-### Commands
+
+__MODULE__ = "bot"
+__HELP__ = """
+/start - get start message
+
+/help - get help commands menu
+
+/ping - check ping of the bot
+"""
+
 PING_COMMAND = get_command("PING_COMMAND")
 
 
