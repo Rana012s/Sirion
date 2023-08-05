@@ -95,4 +95,4 @@ class SpotifyAPI:
         return results, artist_id
 
 
-SAPI = SpotifyAPI()
+Spotify = SpotifyAPI()
