@@ -1,13 +1,12 @@
 from pyrogram import filters
 from pyrogram.types import Message
-
 from Sirion import app
 from config import BANNED_USERS
 from strings import get_command
 from Sirion.utils.database import set_cmode
 from Sirion.utils.decorators.admins import AdminActual
 
-### Multi-Lang Commands
+
 CHANNELPLAY_COMMAND = get_command("CHANNELPLAY_COMMAND")
 
 
