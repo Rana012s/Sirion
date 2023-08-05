@@ -1,14 +1,10 @@
 import asyncio
 import config
-
 from config import BANNED_USERS
-
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-
 from youtubesearchpython.__future__ import VideosSearch
-
-from Sirion import YouTube, app
+from Sirion import YouTube, app, BOT_NAME
 from Sirion.misc import SUDOERS
 from strings import get_command, get_string
 from Sirion.plugins.playlist import del_plist_msg
@@ -21,6 +17,7 @@ from Sirion.utils.database import (add_served_chat,
                                        get_assistant, get_lang,
                                        get_userss, is_on_off,
                                        is_served_private_chat)
+
 from Sirion.utils.decorators.language import LanguageStart
 from Sirion.utils.inline import help_pannel, private_panel, start_pannel
 
@@ -48,7 +45,7 @@ async def start_comm(client, message: Message, _):
         if name[0:4] == "song":
             return await message.reply_text(_["song_2"])
         if name[0:3] == "sta":
-            m = await message.reply_text(f"> ɢᴇᴛᴛɪɴɢ ʏᴏᴜʀ ᴩᴇʀsᴏɴᴀʟ sᴛᴀᴛs ғʀᴏᴍ {config.MUSIC_BOT_NAME} sᴇʀᴠᴇʀ.")
+            m = await message.reply_text(f"> ɢᴇᴛᴛɪɴɢ ʏᴏᴜʀ ᴩᴇʀsᴏɴᴀʟ sᴛᴀᴛs ғʀᴏᴍ {BOT_NAME} sᴇʀᴠᴇʀ.")
             stats = await get_userss(message.from_user.id)
             tot = len(stats)
             if not stats:
@@ -83,7 +80,7 @@ async def start_comm(client, message: Message, _):
                     details = stats.get(vidid)
                     title = (details["title"][:35]).title()
                     if vidid == "telegram":
-                        msg += f"🔗 [ᴛᴇʟᴇɢʀᴀᴍ ᴍᴇᴅɪᴀ](https://t.me/TheAltron) ** ᴩʟᴀʏᴇᴅ {count} ᴛɪᴍᴇs**\n\n"
+                        msg += f"🔗 [ᴛᴇʟᴇɢʀᴀᴍ ᴍᴇᴅɪᴀ] ** ᴩʟᴀʏᴇᴅ {count} ᴛɪᴍᴇs**\n\n"
                     else:
                         msg += f"🔗 [{title}](https://www.youtube.com/watch?v={vidid}) ** ᴩʟᴀʏᴇᴅ {count} ᴛɪᴍᴇs**\n\n"
                 msg = _["ustats_2"].format(tot, tota, limit) + msg
@@ -111,7 +108,7 @@ async def start_comm(client, message: Message, _):
         if name[0:3] == "del":
             await del_plist_msg(client=client, message=message, _=_)
         if name == "verify":
-            await message.reply_text(f"ʜᴇʏ {message.from_user.first_name},\nᴛʜᴀɴᴋs ғᴏʀ ᴠᴇʀɪғʏɪɴɢ ʏᴏᴜʀsᴇʟғ ɪɴ {config.MUSIC_BOT_NAME}, ɴᴏᴡ ʏᴏᴜ ᴄᴀɴ ɢᴏ ʙᴀᴄᴋ ᴀɴᴅ sᴛᴀʀᴛ ᴜsɪɴɢ ᴍᴇ.")
+            await message.reply_text(f"ʜᴇʏ {message.from_user.first_name},\nᴛʜᴀɴᴋs ғᴏʀ ᴠᴇʀɪғʏɪɴɢ ʏᴏᴜʀsᴇʟғ ɪɴ {BOT_NAME}, ɴᴏᴡ ʏᴏᴜ ᴄᴀɴ ɢᴏ ʙᴀᴄᴋ ᴀɴᴅ sᴛᴀʀᴛ ᴜsɪɴɢ ᴍᴇ.")
             if await is_on_off(config.LOG):
                 sender_id = message.from_user.id
                 sender_name = message.from_user.first_name
@@ -146,7 +143,8 @@ async def start_comm(client, message: Message, _):
 📎 <b>ᴄʜᴀɴɴᴇʟ ʟɪɴᴋ:</b> <a href="{channellink}">ᴠɪsɪᴛ ᴄʜᴀɴɴᴇʟ</a>
 🔗 <b>ʟɪɴᴋ:</b> <a href="{link}">ᴡᴀᴛᴄʜ ᴏɴ ʏᴏᴜᴛᴜʙᴇ</a>
 
-⚡ sᴇᴀʀᴄʜ ᴩᴏᴡᴇʀᴇᴅ ʙʏ {config.MUSIC_BOT_NAME}"""
+⚡ sᴇᴀʀᴄʜ ᴩᴏᴡᴇʀᴇᴅ ʙʏ {BOT_NAME}
+"""
             key = InlineKeyboardMarkup(
                 [
                     [
@@ -179,13 +177,13 @@ async def start_comm(client, message: Message, _):
             await message.reply_photo(
                 photo=image,
                 caption=_["start_2"].format(
-                    message.from_user.first_name, config.MUSIC_BOT_NAME, served_users, served_chats
+                    message.from_user.first_name, BOT_NAME, served_users, served_chats
                 ),
                 reply_markup=InlineKeyboardMarkup(out),
             )
         except:
             await message.reply_text(
-                _["start_2"].format(message.from_user.first_name, config.MUSIC_BOT_NAME, served_users, served_chats),
+                _["start_2"].format(message.from_user.first_name, BOT_NAME, served_users, served_chats),
                 reply_markup=InlineKeyboardMarkup(out),
             )
         if await is_on_off(config.LOG):
@@ -207,7 +205,7 @@ async def start_comm(client, message: Message, _):
 async def testbot(client, message: Message, _):
     out = start_pannel(app.username)
     return await message.reply_text(
-                _["start_1"].format(message.chat.title, config.MUSIC_BOT_NAME),
+                _["start_1"].format(message.chat.title, BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(out),
             )
 
@@ -240,16 +238,16 @@ async def welcome(client, message: Message):
                 userbot = await get_assistant(message.chat.id)
                 out = start_pannel(app.username)
                 await message.reply_text(
-                    _["start_3"].format(config.MUSIC_BOT_NAME, userbot.username, userbot.id),
+                    _["start_3"].format(BOT_NAME, userbot.username, userbot.id),
                     reply_markup=InlineKeyboardMarkup(out),
                 )
             if member.id == config.OWNER_ID:
                 return await message.reply_text(
-                    _["start_4"].format(config.MUSIC_BOT_NAME, member.mention)
+                    _["start_4"].format(BOT_NAME, member.mention)
                 )
             elif member.id in SUDOERS:
                 return await message.reply_text(
-                    _["start_5"].format(config.MUSIC_BOT_NAME, member.mention)
+                    _["start_5"].format(BOT_NAME, member.mention)
                 )
             return
         except:
