@@ -4,8 +4,6 @@ import sys
 from os import getenv
 from dotenv import load_dotenv
 from pyrogram import filters
-from Sirion.core.bot import MusicBot
-from Sirion.core.userbot import Userbot
 
 
 if os.path.exists("sample.env"):
@@ -41,10 +39,6 @@ GIT_TOKEN = getenv("GIT_TOKEN", None)
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/TeamSirion")
 
 SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/TheDarFrekerz")
-
-app = MusicBot()
-
-userbot = Userbot()
 
 HELPABLE = {}
 
