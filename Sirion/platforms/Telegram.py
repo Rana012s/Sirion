@@ -1,16 +1,13 @@
 import os
 import time
 import asyncio
-
 from typing import Union
 from datetime import datetime, timedelta
-
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Voice
-
-from config import MUSIC_BOT_NAME, lyrical, TELEGRAM_DOWNLOAD_EDIT_SLEEP
-
-from Sirion import app
+from config import lyrical, TELEGRAM_DOWNLOAD_EDIT_SLEEP
+from Sirion import app, BOT_NAME as MUSIC_BOT_NAME
 from Sirion.utils.formatters import convert_bytes, get_readable_time, seconds_to_min
+
 
 downloader = {}
 
