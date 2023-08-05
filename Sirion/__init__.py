@@ -1,11 +1,12 @@
 import time
-import config
 from aiohttp import ClientSession
 from config import HELPABLE, BOT_ID, BOT_NAME, BOT_USERNAME, BOT_MENTION
+from Sirion.core.bot import app
+from Sirion.core.userbot import userbot
 from Sirion.core.git import git
 from Sirion.core.dir import dirr
 from Sirion.misc import dbb, heroku, sudo
-from Sirion.platforms import YouTubeAPI, SpotifyAPI, TeleAPI
+from Sirion.platforms import YouTube, Spotify, Telegram
 
 
 boot = time.time()
@@ -21,15 +22,15 @@ heroku()
 sudo()
 
 
-app = config.app
+app = app
 
-userbot = config.userbot
+userbot = userbot
 
-YouTube = YouTubeAPI()
+YouTube = YouTube
 
-Spotify = SpotifyAPI()
+Spotify = Spotify
 
-Telegram = TeleAPI()
+Telegram = Telegram
 
 aiohttpsession = ClientSession()
 
