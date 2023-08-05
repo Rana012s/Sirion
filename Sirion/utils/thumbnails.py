@@ -3,8 +3,8 @@ import re
 import aiohttp
 import textwrap
 import aiofiles
-
-from config import YOUTUBE_IMG_URL, MUSIC_BOT_NAME
+from Sirion import BOT_NAME
+from config import YOUTUBE_IMG_URL
 from youtubesearchpython.__future__ import VideosSearch
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
 
@@ -77,7 +77,7 @@ async def gen_thumb(videoid):
         name_font = ImageFont.truetype("Sirion/assets/font.ttf", 30)
         para = textwrap.wrap(title, width=32)
         j = 0
-        draw.text((5, 5), f"{MUSIC_BOT_NAME}", fill="white", font=name_font)
+        draw.text((5, 5), f"{BOT_NAME}", fill="white", font=name_font)
         draw.text(
             (600, 150),
             "NOW PLAYING",
