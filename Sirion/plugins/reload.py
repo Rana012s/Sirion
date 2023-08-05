@@ -1,19 +1,22 @@
 import asyncio
-
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, Message
-
 from strings import get_command
-from config import BANNED_USERS, MUSIC_BOT_NAME, adminlist, lyrical
-
-from Sirion import app
+from config import BANNED_USERS, adminlist, lyrical
+from Sirion import app, BOT_MENTION as MUSIC_BOT_NAME
 from Sirion.misc import db
 from Sirion.core.call import AltCall
 from Sirion.utils.formatters import alpha_to_int
 from Sirion.utils.database import get_authuser_names, get_cmode
 from Sirion.utils.decorators import ActualAdminCB, AdminActual, language
 
-### Multi-Lang Commands
+__MODULE__ = "reload"
+__HELP__ = """
+/restart : ʀᴇsᴛᴀʀᴛs ᴛʜᴇ ʙᴏᴛ ғᴏʀ ʏᴏᴜʀ ᴄʜᴀᴛ
+
+/reload : reload the adminlist
+"""
+
 RELOAD_COMMAND = get_command("RELOAD_COMMAND")
 RESTART_COMMAND = get_command("RESTART_COMMAND")
 
