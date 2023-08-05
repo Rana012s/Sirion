@@ -1,15 +1,19 @@
 from strings import get_command
 from config import BANNED_USERS, adminlist
-
 from pyrogram import filters
 from pyrogram.types import Message
-
 from Sirion import app
 from Sirion.utils.formatters import int_to_alpha
 from Sirion.utils.decorators import AdminActual, language
 from Sirion.utils.database import delete_authuser, get_authuser, get_authuser_names, save_authuser
 
-# Command
+__MODULE__ = "authorize"
+__HELP__ = """
+/authorize - authorize a user to use admin commands
+/unauthorize - unauthorize a user from authorized users list
+/authorized - get authorized users list
+"""
+
 AUTH_COMMAND = get_command("AUTH_COMMAND")
 UNAUTH_COMMAND = get_command("UNAUTH_COMMAND")
 AUTHUSERS_COMMAND = get_command("AUTHUSERS_COMMAND")
