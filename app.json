@@ -25,7 +25,7 @@
         "value": "",
         "required": true
       },
-      "MONGO_DB_URI": {
+      "MONGO_DB": {
         "description": "Get a mongodb url from https://cloud.mongodb.com.",
         "value": "",
         "required": true

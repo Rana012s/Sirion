@@ -11,15 +11,18 @@ if os.path.exists("sample.env"):
     
 
 API_ID = int(getenv("API_ID"))
+
 API_HASH = getenv("API_HASH")
+
 BOT_TOKEN = getenv("BOT_TOKEN")
-MONGO_DB_URI = getenv("MONGO_DB_URI")
+
+MONGO_DB = getenv("MONGO_DB")
 
 DURATION_LIMIT_MIN = int(getenv("DURATION_LIMIT", "900"))
+
 SONG_DOWNLOAD_DURATION = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "180"))
 
 LOG_GROUP_ID = int(getenv("LOG_GROUP_ID"))
-MUSIC_BOT_NAME = getenv("MUSIC_BOT_NAME")
 
 OWNER_ID = int(getenv("OWNER_ID", "5180447182"))
 
@@ -28,11 +31,13 @@ HEROKU_API_KEY = getenv("HEROKU_API_KEY", None)
 HEROKU_APP_NAME = getenv("HEROKU_APP_NAME", None)
 
 UPSTREAM_REPO = getenv("UPSTREAM_REPO", "https://github.com/ExoticHero/Sirion")
+
 UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "main")
 
 GIT_TOKEN = getenv("GIT_TOKEN", None)
 
 SUPPORT_CHANNEL = getenv("SUPPORT_CHANNEL", "https://t.me/TeamSirion")
+
 SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/TheDarFrekerz")
 
 SUPPORT_HEHE = SUPPORT_GROUP.split("me/")[1]
@@ -40,8 +45,6 @@ SUPPORT_HEHE = SUPPORT_GROUP.split("me/")[1]
 AUTO_LEAVING_ASSISTANT = getenv("AUTO_LEAVING_ASSISTANT", "False")
 
 AUTO_LEAVE_ASSISTANT_TIME = int(getenv("ASSISTANT_LEAVE_TIME", "54000"))
-
-SET_CMDS = getenv("SET_CMDS", False)
 
 AUTO_DOWNLOADS_CLEAR = getenv("AUTO_DOWNLOADS_CLEAR", "True")
 
@@ -52,6 +55,7 @@ TELEGRAM_DOWNLOAD_EDIT_SLEEP = int(getenv("TELEGRAM_EDIT_SLEEP", "6"))
 GITHUB_REPO = getenv("GITHUB_REPO", "https://github.com/ExoticHero/Sirion")
 
 SPOTIFY_CLIENT_ID = getenv("SPOTIFY_CLIENT_ID", "04bd2cf9ebad4b6cb54b0e24a039b15e")
+
 SPOTIFY_CLIENT_SECRET = getenv("SPOTIFY_CLIENT_SECRET", "ac02869b41964e349fcda21cd87a902c")
 
 VIDEO_STREAM_LIMIT = int(getenv("VIDEO_STREAM_LIMIT", "2"))
@@ -65,7 +69,7 @@ CLEANMODE_DELETE_MINS = int(getenv("CLEANMODE_MINS", "10"))
 TG_AUDIO_FILESIZE_LIMIT = int(getenv("TG_AUDIO_FILESIZE_LIMIT", "104857600"))
 
 TG_VIDEO_FILESIZE_LIMIT = int(getenv("TG_VIDEO_FILESIZE_LIMIT", "1073741824"))
-# https://www.gbmb.org/mb-to-bytes
+
 
 STRING1 = getenv("STRING_SESSION", None)
 STRING2 = getenv("STRING_SESSION2", None)
@@ -119,6 +123,7 @@ def time_to_seconds(time):
 
 
 DURATION_LIMIT = int(time_to_seconds(f"{DURATION_LIMIT_MIN}:00"))
+
 SONG_DOWNLOAD_DURATION_LIMIT = int(time_to_seconds(f"{SONG_DOWNLOAD_DURATION}:00"))
 
 if UPSTREAM_REPO:

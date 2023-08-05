@@ -1,7 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import Message
 from strings import get_command
-from config import MONGO_DB_URI, OWNER_ID
+from config import MONGO_DB, OWNER_ID
 from Sirion import app, BOT_NAME as MUSIC_BOT_NAME
 from Sirion.misc import SUDOERS
 from Sirion.utils.decorators.language import language
@@ -26,7 +26,7 @@ SUDOUSERS_COMMAND = get_command("SUDOUSERS_COMMAND")
 )
 @language
 async def useradd(client, message: Message, _):
-    if MONGO_DB_URI is None:
+    if MONGO_DB is None:
         return await message.reply_text(
             f"**ᴅᴜᴇ ᴛᴏ {MUSIC_BOT_NAME}'s ᴩʀɪᴠᴀᴄʏ ɪssᴜᴇs, ʏᴏᴜ ᴄᴀɴ'ᴛ ᴍᴀɴᴀɢᴇ sᴜᴅᴏ ᴜsᴇʀs ᴏɴ {MUSIC_BOT_NAME} ᴅᴀᴛᴀʙᴀsᴇ.\n\n ᴩʟᴇᴀsᴇ ᴀᴅᴅ ʏᴏᴜʀ ᴍᴏɴɢᴏ ᴅᴀᴛᴀʙᴀsᴇ ɪɴ ᴠᴀʀs ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ.**"
         )
@@ -68,7 +68,7 @@ async def useradd(client, message: Message, _):
 )
 @language
 async def userdel(client, message: Message, _):
-    if MONGO_DB_URI is None:
+    if MONGO_DB is None:
         return await message.reply_text(
             f"**ᴅᴜᴇ ᴛᴏ {MUSIC_BOT_NAME}'s ᴩʀɪᴠᴀᴄʏ ɪssᴜᴇs, ʏᴏᴜ ᴄᴀɴ'ᴛ ᴍᴀɴᴀɢᴇ sᴜᴅᴏ ᴜsᴇʀs ᴏɴ {MUSIC_BOT_NAME} ᴅᴀᴛᴀʙᴀsᴇ.\n\n ᴩʟᴇᴀsᴇ ᴀᴅᴅ ʏᴏᴜʀ ᴍᴏɴɢᴏ ᴅᴀᴛᴀʙᴀsᴇ ɪɴ ᴠᴀʀs ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ.**"
         )
