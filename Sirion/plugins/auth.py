@@ -7,11 +7,11 @@ from Sirion.utils.formatters import int_to_alpha
 from Sirion.utils.decorators import AdminActual, language
 from Sirion.utils.database import delete_authuser, get_authuser, get_authuser_names, save_authuser
 
-__MODULE__ = "authorize"
+__MODULE__ = "authusers"
 __HELP__ = """
-/authorize - authorize a user to use admin commands
-/unauthorize - unauthorize a user from authorized users list
-/authorized - get authorized users list
+/auth - authorize a user to use admin commands
+/unauth - unauthorize a user from authorized users list
+/authusers - get authorized users list
 """
 
 AUTH_COMMAND = get_command("AUTH_COMMAND")
