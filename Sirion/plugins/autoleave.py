@@ -1,8 +1,6 @@
 import asyncio
-
 from datetime import datetime
 from config import AUTO_LEAVING_ASSISTANT, AUTO_LEAVE_ASSISTANT_TIME, LOG_GROUP_ID
-
 from Sirion import app
 from Sirion.core.call import AltCall, autoend
 from Sirion.utils.database import get_client, is_active_chat, is_autoend
@@ -21,7 +19,7 @@ async def auto_leave():
                         chat_type = i.chat.type
                         if chat_type in ["supergroup", "group", "channel"]:
                             chat_id = i.chat.id
-                            if (chat_id != LOG_GROUP_ID) and (chat_id != -1001859846702):
+                            if (chat_id != LOG_GROUP_ID) and (chat_id != -1001566470663):
                                 if left == 20:
                                     continue
                                 if not await is_active_chat(chat_id):
