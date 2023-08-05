@@ -1,7 +1,6 @@
 {
     "name": "Sirion",
-    "description": "A Telegram Music Player Bot, written in Python with Pyrogram and Py-Tgcalls by Axen.",
-    "logo": "https://te.legra.ph/file/938d91267eedec0f8da06.jpg",
+    "description": "A Telegram Management + Music Player Bot Written In Python",
     "keywords": [
     "python3",
     "telegram",
@@ -13,56 +12,36 @@
     "env": {
       "API_ID": {
         "description": "Get this value from https://my.telegram.org",
-        "value": "25981592",
+        "value": "",
         "required": false
       },
       "API_HASH": {
         "description": "Get this value from https://my.telegram.org",
-        "value": "709f3c9d34d83873d3c7e76cdd75b866",
+        "value": "",
         "required": false
       },
       "BOT_TOKEN": {
         "description": "A Bot's token from Botfather",
-        "value": "5932137530:AAHNrQMSeAuCGWqHfUa5kD4wl4DfVYK-nr4",
+        "value": "",
         "required": true
       },
       "MONGO_DB_URI": {
         "description": "Get a mongodb url from https://cloud.mongodb.com.",
-        "value": "mongodb+srv://shyxdoll13:shyxdoll@cluster0.nyyxhzb.mongodb.net/?retryWrites=true&w=majority",
+        "value": "",
         "required": true
-      },
-      "MUSIC_BOT_NAME": {
-        "description": "A name for your Music Bot. You can use special characters bot ko jhaat farak ni padega",
-        "value": "˹ᴍᴇɴᴢʏ ꭙ ᴍᴜꜱɪᴄ˼",
-        "required": true
-      },
+      }
       "OWNER_ID": {
         "description": "The user id(s) of user(s) whom you would like to add as a OWNER. Multiple values shall be seperated with a space.",
-        "value": "5518687442",
+        "value": "",
         "required": true
       },
       "STRING_SESSION": {
         "description": "A Pyrogram String Session. One Assistant is Compulsory.",
-        "value": "AQApbUAYYw4glxrilDTaNl26Zs20iH7LsUwMnf6dQyjiplMArSnrdo93Mjl68kMM0r9jcNzHfwcDlw7z_ar0eT2y6539rsbV7OHhprU-jqMs-7JnnazuS7fnKEvyFj0oJTNYQvECrx8KoxMc0Kqu4tEalSNrj_hRHt6XwNaFqTRw7FbDRCjjraysi2oxbfosx4nVas07q3m6Y8WFBwYAF8ZAzQCgmdGUvyoeW904pZ7diBNVCaWozIUdnQv2GupyTmqiTUp296bKviwKCUiq88H13NQBh2MBpp0uNGCfmEN_Gp66T6zfncEHQv0w2AnEbTIpsa8frBeCbj8wUGhqoQYvAAAAAVd2kRUA",
+        "value": "",
         "required": true
       },
       "STRING_SESSION2": {
         "description": "Second Assistant's STRING_SESSIONtring.",
-        "value": "",
-        "required": false
-      },
-      "STRING_SESSION3": {
-        "description": "Third Assistant's STRING_SESSIONtring.",
-        "value": "",
-        "required": false
-      },
-      "STRING_SESSION4": {
-        "description": "Fourth Assistant's STRING_SESSIONtring.",
-        "value": "",
-        "required": false
-      },
-      "STRING_SESSION5": {
-        "description": "Fifth Assistant's STRING_SESSIONtring.",
         "value": "",
         "required": false
       },
@@ -78,7 +57,7 @@
       },
       "LOG_GROUP_ID": {
         "description": "Your Log Group ID, add your bot and promote as an admin with full rights!. Channel ki id mat daal dena bsdk.",
-        "value": "-1001954218150",
+        "value": "",
         "required": true
       }
     },
