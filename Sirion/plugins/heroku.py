@@ -8,13 +8,11 @@ import heroku3
 import urllib3
 import requests
 import config
-
 from git import Repo
 from os import remove
 from pyrogram import filters
 from datetime import datetime
 from git.exc import GitCommandError, InvalidGitRepositoryError
-
 from config import OWNER_ID
 from strings import get_command
 
@@ -25,7 +23,25 @@ from Sirion.utils.decorators.language import language
 from Sirion.utils.database import get_active_chats, remove_active_chat, remove_active_video_chat
 
 
-# Commands
+__MODULE__ = "heroku"
+__HELP__ = """
+/usage : sʜᴏᴡs ᴛʜᴇ ᴅʏɴᴏ ᴜsᴀɢᴇ ᴏғ ᴛʜᴇ ᴍᴏɴᴛʜ.
+
+/getvar : ɢᴇᴛ ᴀ ᴄᴏɴғɪɢ ᴠᴀʀ ғʀᴏᴍ ʜᴇʀᴏᴋᴜ ᴏʀ .ᴇɴᴠ
+
+/delvar : ᴅᴇʟᴇᴛᴇ ᴀ ᴄᴏɴғɪɢ ᴠᴀʀ ᴏɴ ʜᴇʀᴏᴋᴜ ᴏʀ .ᴇɴᴠ
+
+/setvar [ᴠᴀʀ ɴᴀᴍᴇ] [ᴠᴀʟᴜᴇ] : sᴇᴛ ᴏʀ ᴜᴩᴅᴀᴛᴇ ᴀ ᴄᴏɴғɪɢ ᴠᴀʀ ᴏɴ ʜᴇʀᴏᴋᴜ ᴏʀ .ᴇɴᴠ
+
+/reboot : ʀᴇʙᴏᴏᴛ ʏᴏᴜʀ ʙᴏᴛ
+
+/update : ᴜᴩᴅᴀᴛᴇ ᴛʜᴇ ʙᴏᴛ ғʀᴏᴍ ᴛʜᴇ ᴜᴩsᴛʀᴇᴀᴍ ʀᴇᴩᴏ
+
+/maintenance [ᴇɴᴀʙʟᴇ/ᴅɪsᴀʙʟᴇ] : ᴇɴᴀʙʟᴇ ᴏʀ ᴅɪsᴀʙʟᴇ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ ᴍᴏᴅᴇ ᴏғ ʏᴏᴜʀ ʙᴏᴛ
+
+/logs [ɴᴜᴍʙᴇʀ ᴏғ ʟɪɴᴇs] : ɢᴇᴛ ʟᴏɢs ᴏғ ʏᴏᴜʀ ʙᴏᴛ 
+"""
+
 GETLOG_COMMAND = get_command("GETLOG_COMMAND")
 GETVAR_COMMAND = get_command("GETVAR_COMMAND")
 DELVAR_COMMAND = get_command("DELVAR_COMMAND")
