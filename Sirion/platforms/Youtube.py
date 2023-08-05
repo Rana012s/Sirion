@@ -364,3 +364,6 @@ class YouTubeAPI:
                 None, audio_dl
             )
         return downloaded_file, direct
+
+
+YouTube = YouTubeAPI()
