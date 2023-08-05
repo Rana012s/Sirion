@@ -1,9 +1,8 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, Message
-
 from config import (
     BANNED_USERS, AUTO_DOWNLOADS_CLEAR, STREAM_IMG_URL,
-    TELEGRAM_VIDEO_URL, TELEGRAM_AUDIO_URL, SOUNCLOUD_IMG_URL)
+    TELEGRAM_VIDEO_URL, TELEGRAM_AUDIO_URL)
 from strings import get_command
 
 from Sirion import YouTube, app
@@ -16,7 +15,6 @@ from Sirion.utils.stream.autoclear import auto_clean
 from Sirion.utils.inline.play import stream_markup, telegram_markup, close_keyboard
 
 
-# Commands
 SKIP_COMMAND = get_command("SKIP_COMMAND")
 
 
@@ -171,17 +169,6 @@ async def skip(cli, message: Message, _, chat_id):
             button = telegram_markup(_, chat_id)
             run = await message.reply_photo(
                 photo=TELEGRAM_AUDIO_URL
-                if str(streamtype) == "audio"
-                else TELEGRAM_VIDEO_URL,
-                caption=_["stream_3"].format(title, check[0]["dur"], user),
-                reply_markup=InlineKeyboardMarkup(button),
-            )
-            db[chat_id][0]["mystic"] = run
-            db[chat_id][0]["markup"] = "tg"
-        elif videoid == "soundcloud":
-            button = telegram_markup(_, chat_id)
-            run = await message.reply_photo(
-                photo=SOUNCLOUD_IMG_URL
                 if str(streamtype) == "audio"
                 else TELEGRAM_VIDEO_URL,
                 caption=_["stream_3"].format(title, check[0]["dur"], user),
