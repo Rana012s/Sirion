@@ -1,11 +1,8 @@
 import shlex
 import config
 import asyncio
-
 from typing import Tuple
-
 from Sirion.logging import LOGGER
-
 from git import Repo
 from git.exc import GitCommandError, InvalidGitRepositoryError
 
