@@ -1,16 +1,22 @@
 from config import BANNED_USERS
 from strings import get_command
-
 from pyrogram import filters
 from pyrogram.types import Message
-
 from Sirion import app
 from Sirion.misc import SUDOERS
 from Sirion.utils.decorators.language import language
 from Sirion.utils.database import blacklist_chat, blacklisted_chats, whitelist_chat
 
 
-# Commands
+__MODULE__ = "bl-chat"
+__HELP__ = """
+/blacklistchat [ᴄʜᴀᴛ ɪᴅ] : ʙʟᴀᴄᴋʟɪsᴛ ᴀ ᴄʜᴀᴛ ғʀᴏᴍ ᴜsɪɴɢ ᴛʜᴇ ʙᴏᴛ.
+
+/whitelistchat [ᴄʜᴀᴛ ɪᴅ] : ᴡʜɪᴛᴇʟɪsᴛ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴄʜᴀᴛ.
+
+/blacklistedchat : sʜᴏᴡs ᴛʜᴇ ʟɪsᴛ ᴏғ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴄʜᴀᴛs.
+"""
+
 
 BLACKLISTCHAT_COMMAND = get_command("BLACKLISTCHAT_COMMAND")
 WHITELISTCHAT_COMMAND = get_command("WHITELISTCHAT_COMMAND")
