@@ -4,8 +4,7 @@ import importlib
 from os import mkdir, path
 from pyrogram import idle
 from pytgcalls.exceptions import NoActiveGroupCall
-from Sirion import LOGGER, app, userbot, HELPABLE
-from Sirion import *
+from Sirion import LOGGER, app, userbot, HELPABLE, BOT_ID, BOT_NAME, BOT_MENTION, BOT_USERNAME
 from Sirion.core.call import JavaCall
 from Sirion.plugins import ALL_MODULES
 
