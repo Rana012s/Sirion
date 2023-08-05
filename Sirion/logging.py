@@ -1,5 +1,4 @@
 import logging
-from config import LOG_FILE_NAME
 from logging.handlers import RotatingFileHandler
 
 
@@ -8,7 +7,7 @@ logging.basicConfig(
     format="[%(asctime)s - %(levelname)s] - %(name)s - %(message)s",
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
-        RotatingFileHandler(LOG_FILE_NAME, maxBytes=5000000, backupCount=10),
+        RotatingFileHandler("logs.txt", maxBytes=5000000, backupCount=10),
         logging.StreamHandler(),
     ],
 )
