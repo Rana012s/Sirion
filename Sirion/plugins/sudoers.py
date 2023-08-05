@@ -1,15 +1,21 @@
 from pyrogram import filters
 from pyrogram.types import Message
-
 from strings import get_command
-from config import MONGO_DB_URI, OWNER_ID, MUSIC_BOT_NAME
-
-from Sirion import app
+from config import MONGO_DB_URI, OWNER_ID
+from Sirion import app, BOT_NAME as MUSIC_BOT_NAME
 from Sirion.misc import SUDOERS
 from Sirion.utils.decorators.language import language
 from Sirion.utils.database import add_sudo, remove_sudo
 
-# Command
+__MODULE__ = "sudo"
+__HELP__ = """
+/addsudo [ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ʀᴇᴩʟʏ ᴛᴏ ᴀ ᴜsᴇʀ] : add sudo user
+
+/delsudo [ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ʀᴇᴩʟʏ ᴛᴏ ᴀ ᴜsᴇʀ] : remve sudo user
+
+/sudolist : sʜᴏᴡs ᴛʜᴇ sᴜᴅᴏ ᴜsᴇʀs ᴏғ ᴍᴜsɪᴄ ʙᴏᴛ
+"""
+
 ADDSUDO_COMMAND = get_command("ADDSUDO_COMMAND")
 DELSUDO_COMMAND = get_command("DELSUDO_COMMAND")
 SUDOUSERS_COMMAND = get_command("SUDOUSERS_COMMAND")
