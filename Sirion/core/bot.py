@@ -1,16 +1,15 @@
 import sys
-from config import API_ID, API_HASH, BOT_TOKEN, LOG_GROUP_ID, MUSIC_BOT_NAME
-
+from config import API_ID, API_HASH, BOT_TOKEN, LOG_GROUP_ID
+from Sirion import BOT_MENTION
 from pyrogram import Client
-
 from Sirion.logging import LOGGER
 
 
 class MusicBot(Client):
     def __init__(self):
-        LOGGER(__name__).info(f"Starting Bot...")
+        LOGGER(__name__).info(f"Starting Bot")
         super().__init__(
-            "MusicBot",
+            "Sirion",
             api_id=API_ID,
             api_hash=API_HASH,
             bot_token=BOT_TOKEN,
@@ -33,7 +32,7 @@ class MusicBot(Client):
         LOGGER(__name__).info(f"MusicBot Started as {self.name}")
         try:
             await self.send_message(
-                LOG_GROUP_ID, f"**» {MUSIC_BOT_NAME} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ :**\n\n❄ ɴᴀᴍᴇ : {self.name}\n✨ ɪᴅ : `{self.id}`\n💫 ᴜsᴇʀɴᴀᴍᴇ : @{self.username}"
+                LOG_GROUP_ID, f"**» {BOT_MENTION} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ :**\n\n❄ ɴᴀᴍᴇ : {self.name}\n✨ ɪᴅ : `{self.id}`\n💫 ᴜsᴇʀɴᴀᴍᴇ : @{self.username}"
             )
         except:
             LOGGER(__name__).error(
