@@ -1,34 +1,32 @@
 import math
-
 from config import SUPPORT_GROUP
 from Sirion.utils.formatters import time_to_seconds
+from Sirion import *
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-
-## After Edits with Timer Bar
 
 def stream_markup_timer(_, videoid, chat_id, played, dur):
     played_sec = time_to_seconds(played)
     duration_sec = time_to_seconds(dur)
     percentage = (played_sec / duration_sec) * 100
-    axen = math.floor(percentage)
-    if 0 < axen <= 10:
+    ax = math.floor(percentage)
+    if 0 < ax <= 10:
         bar = "◉—————————"
-    elif 10 < axen < 20:
+    elif 10 < ax < 20:
         bar = "—◉————————"
-    elif 20 <= axen < 30:
+    elif 20 <= ax < 30:
         bar = "——◉———————"
-    elif 30 <= axen < 40:
+    elif 30 <= ax < 40:
         bar = "———◉——————"
-    elif 40 <= axen < 50:
+    elif 40 <= ax < 50:
         bar = "————◉—————"
-    elif 50 <= axen < 60:
+    elif 50 <= ax < 60:
         bar = "—————◉————"
-    elif 60 <= axen < 70:
+    elif 60 <= ax < 70:
         bar = "——————◉———"
-    elif 70 <= axen < 80:
+    elif 70 <= ax < 80:
         bar = "———————◉——"
-    elif 80 <= axen < 95:
+    elif 80 <= ax < 95:
         bar = "————————◉—"
     else:
         bar = "—————————◉"
@@ -56,24 +54,24 @@ def telegram_markup_timer(_, chat_id, played, dur):
     played_sec = time_to_seconds(played)
     duration_sec = time_to_seconds(dur)
     percentage = (played_sec / duration_sec) * 100
-    axen = math.floor(percentage)
-    if 0 < axen <= 10:
+    ax = math.floor(percentage)
+    if 0 < ax <= 10:
         bar = "◉—————————"
-    elif 10 < axen < 20:
+    elif 10 < ax < 20:
         bar = "—◉————————"
-    elif 20 <= axen < 30:
+    elif 20 <= ax < 30:
         bar = "——◉———————"
-    elif 30 <= axen < 40:
+    elif 30 <= ax < 40:
         bar = "———◉——————"
-    elif 40 <= axen < 50:
+    elif 40 <= ax < 50:
         bar = "————◉—————"
-    elif 50 <= axen < 60:
+    elif 50 <= ax < 60:
         bar = "—————◉————"
-    elif 60 <= axen < 70:
+    elif 60 <= ax < 70:
         bar = "——————◉———"
-    elif 70 <= axen < 80:
+    elif 70 <= ax < 80:
         bar = "———————◉——"
-    elif 80 <= axen < 95:
+    elif 80 <= ax < 95:
         bar = "————————◉—"
     else:
         bar = "—————————◉"
@@ -126,9 +124,6 @@ def telegram_markup(_, chat_id):
     return buttons
 
 
-## Search Query Inline
-
-
 def track_markup(_, videoid, user_id, channel, fplay):
     buttons = [
         [
@@ -140,8 +135,6 @@ def track_markup(_, videoid, user_id, channel, fplay):
         ]
     ]
     return buttons
-
-## Live Stream Markup
 
 
 def livestream_markup(_, videoid, user_id, mode, channel, fplay):
@@ -156,7 +149,6 @@ def livestream_markup(_, videoid, user_id, mode, channel, fplay):
     ]
     return buttons
 
-## wtf
 
 def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
     buttons = [
@@ -170,9 +162,6 @@ def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
         ]
     ]
     return buttons
-
-
-## Slider Query Markup
 
 
 def slider_markup(
@@ -192,7 +181,6 @@ def slider_markup(
     ]
     return buttons
 
-## Extra Shit
 
 close_keyboard = InlineKeyboardMarkup( 
             [
