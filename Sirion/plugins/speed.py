@@ -1,10 +1,8 @@
 from strings import get_command
-from config import MUSIC_BOT_NAME, BANNED_USERS, adminlist
-
+from config import BANNED_USERS, adminlist
 from pyrogram import filters
 from pyrogram.types import Message
-
-from Sirion import app
+from Sirion import app, BOT_NAME as MUSIC_BOT_NAME
 from Sirion.misc import SUDOERS, db
 from Sirion.core.call import AltCall
 from Sirion.utils import AdminRightsCheck
