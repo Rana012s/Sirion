@@ -1,11 +1,10 @@
 from strings import get_command
-from config import BANNED_USERS, MUSIC_BOT_NAME, CLEANMODE_DELETE_MINS
-
+from config import BANNED_USERS, CLEANMODE_DELETE_MINS
 from pyrogram import filters
 from pyrogram.errors import MessageNotModified
 from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
+from Sirion import app, BOT_NAME as MUSIC_BOT_NAME
 
-from Sirion import app
 from Sirion.utils.database import (
     add_nonadmin_chat, cleanmode_off, cleanmode_on,
     commanddelete_off, commanddelete_on, get_aud_bit_name,
@@ -14,10 +13,12 @@ from Sirion.utils.database import (
     get_vid_bit_name, is_cleanmode_on, is_commanddelete_on,
     is_nonadmin_chat, remove_nonadmin_chat, save_audio_bitrate,
     save_video_bitrate, set_playmode, set_playtype)
+
 from Sirion.utils.inline.settings import (
     audio_quality_markup, auth_users_markup,
     playmode_users_markup, setting_markup,
     video_quality_markup, cleanmode_settings_markup)
+
 from Sirion.utils.inline.start import private_panel
 from Sirion.utils.decorators.admins import ActualAdminCB
 from Sirion.utils.decorators.language import language, languageCB
@@ -74,7 +75,6 @@ async def settings_back_markup(client, CallbackQuery: CallbackQuery,_):
         return await CallbackQuery.edit_message_reply_markup(InlineKeyboardMarkup(buttons))
 
 
-## Audio and Video Quality
 async def gen_buttons_aud(_, aud):
     if aud == "High":
         buttons = audio_quality_markup(_, high=True)
@@ -93,9 +93,6 @@ async def gen_buttons_vid(_, aud):
     elif aud == "Low":
         buttons = video_quality_markup(_, low=True)
     return buttons
-
-
-# without admin rights
 
 
 @app.on_callback_query(
@@ -195,8 +192,6 @@ async def without_Admin_rights(client, CallbackQuery, _):
         return
 
 
-# Audio Video Quality
-
 @app.on_callback_query(
     filters.regex(pattern=r"^(LQA|MQA|HQA|LQV|MQV|HQV)$")
     & ~BANNED_USERS
@@ -234,7 +229,6 @@ async def aud_vid_cb(client, CallbackQuery, _):
         return
 
 
-# Play Mode Settings
 @app.on_callback_query(
     filters.regex(
         pattern=r"^(|MODECHANGE|CHANNELMODECHANGE|PLAYTYPECHANGE)$"
@@ -319,7 +313,6 @@ async def playmode_ans(client, CallbackQuery, _):
         return
 
 
-# Auth Users Settings
 @app.on_callback_query(
     filters.regex(pattern=r"^(AUTH|AUTHLIST)$") & ~BANNED_USERS
 )
@@ -386,9 +379,6 @@ async def authusers_mar(client, CallbackQuery, _):
         )
     except MessageNotModified:
         return
-
-
-## Clean Mode
 
 
 @app.on_callback_query(
