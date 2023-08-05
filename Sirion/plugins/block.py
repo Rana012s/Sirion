@@ -1,15 +1,22 @@
 from config import BANNED_USERS
 from strings import get_command
-
 from pyrogram import filters
 from pyrogram.types import Message
-
 from Sirion import app
 from Sirion.misc import SUDOERS
 from Sirion.utils.decorators.language import language
 from Sirion.utils.database import add_gban_user, remove_gban_user
 
-# Command
+
+__MODULE__ = "block"
+__HELP__ = """
+/block [ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ʀᴇᴩʟʏ ᴛᴏ ᴀ ᴜsᴇʀ] : sᴛᴀʀᴛs ɪɢɴᴏʀɪɴɢ ᴛʜᴇ ᴜsᴇʀ, sᴏ ᴛʜᴀᴛ ʜᴇ/ꜱʜᴇ ᴄᴀɴ'ᴛ ᴜsᴇ ʙᴏᴛ ᴄᴏᴍᴍᴀɴᴅs.
+
+/unblock [ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ʀᴇᴩʟʏ ᴛᴏ ᴀ ᴜsᴇʀ] : ᴜɴʙʟᴏᴄᴋs ᴛʜᴇ ʙʟᴏᴄᴋᴇᴅ ᴜsᴇʀ.
+
+/blockedusers : sʜᴏᴡs ᴛʜᴇ ʟɪsᴛ ᴏғ ʙʟᴏᴄᴋᴇᴅ ᴜsᴇʀs.
+"""
+
 BLOCK_COMMAND = get_command("BLOCK_COMMAND")
 UNBLOCK_COMMAND = get_command("UNBLOCK_COMMAND")
 BLOCKED_COMMAND = get_command("BLOCKED_COMMAND")
