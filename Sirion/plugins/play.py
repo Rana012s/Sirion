@@ -7,7 +7,7 @@ from pyrogram import filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InputMediaPhoto
 from pytgcalls.exceptions import NoActiveGroupCall
 
-from Sirion.core.call import AltCall
+from Sirion.core.call import JavaCall
 from Sirion.utils.logger import play_logs
 from Sirion.utils.formatters import formats
 from Sirion.utils.stream.stream import stream
@@ -297,7 +297,7 @@ async def play_commnd(
 
         else:
             try:
-                await AltCall.stream_call(url)
+                await JavaCall.stream_call(url)
             except NoActiveGroupCall:
                 await mystic.edit_text(
                     "ᴛʜᴇʀᴇ's ᴀɴ ᴇʀʀᴏʀ ɪɴ ᴛʜᴇ ʙᴏᴛ, ᴩʟᴇᴀsᴇ ʀᴇᴩᴏʀᴛ ɪᴛ ᴛᴏ sᴜᴩᴩᴏʀᴛ ᴄʜᴀᴛ ᴀs sᴏᴏɴ ᴀs ᴩᴏssɪʙʟᴇ."
@@ -546,7 +546,7 @@ async def anonymous_check(client, CallbackQuery):
 
 
 @app.on_callback_query(
-    filters.regex("AltPlaylists") & ~BANNED_USERS
+    filters.regex("JavaPlaylists") & ~BANNED_USERS
 )
 @languageCB
 async def play_playlists_command(client, CallbackQuery, _):

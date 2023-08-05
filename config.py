@@ -78,7 +78,6 @@ STRING5 = getenv("STRING_SESSION5", None)
 BANNED_USERS = filters.user()
 YTDOWNLOADER = 1
 LOG = 2
-DEV = 5180447182
 
 adminlist = {}
 lyrical = {}

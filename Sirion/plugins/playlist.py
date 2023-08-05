@@ -6,7 +6,7 @@ from pyrogram import filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 from Sirion import YouTube, app
-from Sirion.utils.pastebin import Altbin
+from Sirion.utils.pastebin import Javabin
 from Sirion.utils.stream.stream import stream
 from Sirion.utils.inline.play import close_keyboard
 from Sirion.utils.decorators.language import language, languageCB
@@ -47,7 +47,7 @@ async def check_playlist(client, message: Message, _):
         msg += f"\n\n{count}- {title[:70]}\n"
         msg += _["playlist_5"].format(_note["duration"])
         count += 1
-    link = await Altbin(msg)
+    link = await Javabin(msg)
     if link:
         await get.edit_text(_["playlist_15"].format(link))
     else:

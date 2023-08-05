@@ -4,7 +4,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 from Sirion import app, BOT_NAME as MUSIC_BOT_NAME
 from Sirion.misc import SUDOERS, db
-from Sirion.core.call import AltCall
+from Sirion.core.call import JavaCall
 from Sirion.utils import AdminRightsCheck
 from Sirion.utils.inline.speed import speed_markup
 from Sirion.utils.inline.play import close_keyboard
@@ -79,7 +79,7 @@ async def del_back_playlist(client, CallbackQuery, _):
         reply_markup=close_keyboard
     )
     try:
-        await AltCall.speedup_stream(chat_id, file_path, speed, playing)
+        await JavaCall.speedup_stream(chat_id, file_path, speed, playing)
     except Exception as e:
         print(e)
         if chat_id in checker:

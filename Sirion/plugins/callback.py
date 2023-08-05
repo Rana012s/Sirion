@@ -6,7 +6,7 @@ from strings import get_string
 from config import (AUTO_DOWNLOADS_CLEAR, BANNED_USERS, STREAM_IMG_URL,
                     TELEGRAM_AUDIO_URL, TELEGRAM_VIDEO_URL, adminlist)
 from Sirion import YouTube, app, userbot
-from Sirion.core.call import AltCall
+from Sirion.core.call import JavaCall
 from Sirion.misc import SUDOERS, db
 from Sirion.utils.database import (
     get_active_chats,
@@ -124,7 +124,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             return await CallbackQuery.answer(_["admin_1"], show_alert=True)
         await CallbackQuery.answer()
         await music_off(chat_id)
-        await AltCall.pause_stream(chat_id)
+        await JavaCall.pause_stream(chat_id)
         await CallbackQuery.message.reply_text(_["admin_2"].format(mention), reply_markup=close_keyboard)
 
     elif command == "Resume":
@@ -132,12 +132,12 @@ async def del_back_playlist(client, CallbackQuery, _):
             return await CallbackQuery.answer(_["admin_3"], show_alert=True)
         await CallbackQuery.answer()
         await music_on(chat_id)
-        await AltCall.resume_stream(chat_id)
+        await JavaCall.resume_stream(chat_id)
         await CallbackQuery.message.reply_text(_["admin_4"].format(mention), reply_markup=close_keyboard)
 
     elif command == "Stop" or command == "End":
         await CallbackQuery.answer()
-        await AltCall.stop_stream(chat_id)
+        await JavaCall.stop_stream(chat_id)
         await set_loop(chat_id, 0)
         await CallbackQuery.message.delete()
         await CallbackQuery.message.reply_text(_["admin_9"].format(mention), reply_markup=close_keyboard)
@@ -166,14 +166,14 @@ async def del_back_playlist(client, CallbackQuery, _):
                 await CallbackQuery.edit_message_text(_["admin_35"].format(mention), reply_markup=close_keyboard)
                 await CallbackQuery.message.reply_text(_["admin_10"].format(mention, CallbackQuery.message.chat.title), reply_markup=close_keyboard)
                 try:
-                    return await AltCall.stop_stream(chat_id)
+                    return await JavaCall.stop_stream(chat_id)
                 except:
                     return
         except:
             try:
                 await CallbackQuery.edit_message_text(_["admin_35"].format(mention), reply_markup=close_keyboard)
                 await CallbackQuery.message.reply_text(_["admin_10"].format(mention, CallbackQuery.message.chat.title), reply_markup=close_keyboard)
-                return await AltCall.stop_stream(chat_id)
+                return await JavaCall.stop_stream(chat_id)
             except:
                 return
 
@@ -192,7 +192,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             if n == 0:
                 return await CallbackQuery.message.reply_text(_["admin_11"].format(title))
             try:
-                await AltCall.skip_stream(chat_id, link, video=status)
+                await JavaCall.skip_stream(chat_id, link, video=status)
             except Exception:
                 return await CallbackQuery.message.reply_text(_["call_9"])
             await CallbackQuery.edit_message_text(_["admin_35"].format(mention))
@@ -212,7 +212,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             except:
                 return await mystic.edit_text(_["call_9"])
             try:
-                await AltCall.skip_stream(chat_id, file_path, video=status)
+                await JavaCall.skip_stream(chat_id, file_path, video=status)
             except Exception:
                 return await mystic.edit_text(_["call_9"])
             await CallbackQuery.edit_message_text(_["admin_35"].format(mention))
@@ -228,7 +228,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             await mystic.delete()
         elif "index_" in queued:
             try:
-                await AltCall.skip_stream(chat_id, videoid, video=status)
+                await JavaCall.skip_stream(chat_id, videoid, video=status)
             except Exception:
                 return await CallbackQuery.message.reply_text(_["call_9"])
             await CallbackQuery.edit_message_text(_["admin_35"].format(mention))
@@ -242,7 +242,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             db[chat_id][0]["markup"] = "tg"
         else:
             try:
-                await AltCall.skip_stream(chat_id, queued, video=status)
+                await JavaCall.skip_stream(chat_id, queued, video=status)
             except:
                 return await CallbackQuery.message.reply_text(_["call_9"])
             await CallbackQuery.edit_message_text(_["admin_35"].format(mention))
@@ -319,7 +319,7 @@ async def del_back_playlist(client, CallbackQuery, _):
             if n == 0:
                 return await mystic.edit_text(_["admin_30"])
         try:
-            await AltCall.seek_stream(chat_id, file_path, seconds_to_min(to_seek), duration, playing[0]["streamtype"])
+            await JavaCall.seek_stream(chat_id, file_path, seconds_to_min(to_seek), duration, playing[0]["streamtype"])
         except:
             return await mystic.edit_text(_["admin_34"])
         if int(command) in [1, 3]:

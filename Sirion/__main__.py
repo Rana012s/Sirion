@@ -6,7 +6,7 @@ from pyrogram import idle
 from pytgcalls.exceptions import NoActiveGroupCall
 from Sirion import LOGGER, app, userbot, HELPABLE
 from Sirion import *
-from Sirion.core.call import AltCall
+from Sirion.core.call import JavaCall
 from Sirion.plugins import ALL_MODULES
 
 
@@ -49,15 +49,15 @@ async def init():
     LOGGER("Sirion.plugins").info("Necessary Modules Imported Successfully.")
     
     await userbot.start()
-    await AltCall.start()
+    await JavaCall.start()
     try:
-        await AltCall.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
+        await JavaCall.stream_call("https://te.legra.ph/file/29f784eb49d230ab62e9e.mp4")
     except NoActiveGroupCall:
         LOGGER("Sirion").error("[ERROR] - \n\nPlease turn on your Logger Group's Voice Call")
     except:
         pass
         
-    await AltCall.decorators()
+    await JavaCall.decorators()
     LOGGER("Sirion").info("Riruru Music Bot Started Successfully")
     await idle()
 

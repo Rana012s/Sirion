@@ -5,7 +5,7 @@ from strings import get_command
 from config import BANNED_USERS, adminlist, lyrical
 from Sirion import app, BOT_MENTION as MUSIC_BOT_NAME
 from Sirion.misc import db
-from Sirion.core.call import AltCall
+from Sirion.core.call import JavaCall
 from Sirion.utils.formatters import alpha_to_int
 from Sirion.utils.database import get_authuser_names, get_cmode
 from Sirion.utils.decorators import ActualAdminCB, AdminActual, language
@@ -57,7 +57,7 @@ async def restartbot(client, message: Message, _):
     await asyncio.sleep(1)
     try:
         db[message.chat.id] = []
-        await AltCall.stop_stream(message.chat.id)
+        await JavaCall.stop_stream(message.chat.id)
     except:
         pass
     chat_id = await get_cmode(message.chat.id)
@@ -68,7 +68,7 @@ async def restartbot(client, message: Message, _):
             pass
         try:
             db[chat_id] = []
-            await AltCall.stop_stream(chat_id)
+            await JavaCall.stop_stream(chat_id)
         except:
             pass
     return await mystic.edit_text(f"sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇʙᴏᴏᴛᴇᴅ {MUSIC_BOT_NAME} ғᴏʀ ʏᴏᴜʀ ᴄʜᴀᴛ, ɴᴏᴡ ʏᴏᴜ ᴄᴀɴ sᴛᴀʀᴛ ᴩʟᴀʏɪɴɢ ᴀɢᴀɪɴ...")

@@ -10,7 +10,7 @@ from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 from Sirion import app, YouTube
 from Sirion.misc import db
 from Sirion.utils.thumbnails import gen_thumb
-from Sirion.utils import Altbin, get_channeplayCB
+from Sirion.utils import Javabin, get_channeplayCB
 from Sirion.utils.formatters import seconds_to_min
 from Sirion.utils.database import get_cmode, is_active_chat
 from Sirion.utils.inline import queue_back_markup, queue_markup
@@ -130,7 +130,7 @@ async def queued_tracks(client, CallbackQuery: CallbackQuery, _):
             return await CallbackQuery.edit_message_text(msg, reply_markup=buttons)
         if "✨" in msg:
             msg = msg.replace("✨", "")
-        link = await Altbin(msg)
+        link = await Javabin(msg)
         if not link:
             return await CallbackQuery.message.reply_text(_["queue_6"])
         med = InputMediaPhoto(media=link, caption=_["queue_3"].format(link))

@@ -5,7 +5,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from Sirion import app
-from Sirion.core.call import AltCall
+from Sirion.core.call import JavaCall
 from Sirion.utils.inline.play import close_keyboard
 from Sirion.utils.decorators import AdminRightsCheck
 from Sirion.utils.database import is_music_playing, music_off
@@ -23,7 +23,7 @@ async def pause_admin(cli, message: Message, _, chat_id):
         return await message.reply_text(_["admin_1"])
 
     await music_off(chat_id)
-    await AltCall.pause_stream(chat_id)
+    await JavaCall.pause_stream(chat_id)
     await message.reply_text(
         _["admin_2"].format(message.from_user.first_name),
         reply_markup=close_keyboard

@@ -2,7 +2,7 @@ import asyncio
 from datetime import datetime
 from config import AUTO_LEAVING_ASSISTANT, AUTO_LEAVE_ASSISTANT_TIME, LOG_GROUP_ID
 from Sirion import app
-from Sirion.core.call import AltCall, autoend
+from Sirion.core.call import JavaCall, autoend
 from Sirion.utils.database import get_client, is_active_chat, is_autoend
 
 
@@ -49,7 +49,7 @@ async def auto_end():
                     continue
                 autoend[chat_id] = {}
                 try:
-                    await AltCall.stop_stream(chat_id)
+                    await JavaCall.stop_stream(chat_id)
                 except:
                     continue
                 try:

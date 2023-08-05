@@ -18,7 +18,7 @@ from strings import get_command
 
 from Sirion import app
 from Sirion.misc import HAPP, XCB
-from Sirion.utils.pastebin import Altbin
+from Sirion.utils.pastebin import Javabin
 from Sirion.utils.decorators.language import language
 from Sirion.utils.database import get_active_chats, remove_active_chat, remove_active_video_chat
 
@@ -64,7 +64,7 @@ async def log_(client, message, _):
         if HAPP is None:
             return await message.reply_text(_["heroku_1"])
         data = HAPP.get_log()
-        link = await Altbin(data)
+        link = await Javabin(data)
         if link:
             return await message.reply_text(link)
         else:
@@ -88,7 +88,7 @@ async def log_(client, message, _):
                 NUMB = 100
             for x in lines[-NUMB:]:
                 data += x
-            link = await Altbin(data)
+            link = await Javabin(data)
             if link:
                 return await message.reply_text(link)
             else:
@@ -276,7 +276,7 @@ async def update_(client, message, _):
     _final_updates_ = _update_response_ + updates
 
     if len(_final_updates_) > 4096:
-        url = await Altbin(updates)
+        url = await Javabin(updates)
         nrs = await response.edit(
             f"<b>ᴀ ɴᴇᴡ ᴜᴩᴅᴀᴛᴇ ɪs ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛʜᴇ ʙᴏᴛ !</b>\n\n➣ ᴩᴜsʜɪɴɢ ᴜᴩᴅᴀᴛᴇs ɴᴏᴡ</code>\n\n**<u>ᴜᴩᴅᴀᴛᴇs:</u>**\n\n[ᴄʜᴇᴄᴋ ᴜᴩᴅᴀᴛᴇs]({url})"
         )

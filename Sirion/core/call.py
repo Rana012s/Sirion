@@ -504,4 +504,4 @@ class Call(PyTgCalls):
                 autoend[chat_id] = {}
 
 
-AltCall = Call()
+JavaCall = Call()

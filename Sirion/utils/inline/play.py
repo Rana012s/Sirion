@@ -153,8 +153,8 @@ def livestream_markup(_, videoid, user_id, mode, channel, fplay):
 def playlist_markup(_, videoid, user_id, ptype, channel, fplay):
     buttons = [
         [
-            InlineKeyboardButton(text=_["P_B_1"], callback_data=f"AltPlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}"),
-            InlineKeyboardButton(text=_["P_B_2"], callback_data=f"AltPlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}")
+            InlineKeyboardButton(text=_["P_B_1"], callback_data=f"JavaPlaylists {videoid}|{user_id}|{ptype}|a|{channel}|{fplay}"),
+            InlineKeyboardButton(text=_["P_B_2"], callback_data=f"JavaPlaylists {videoid}|{user_id}|{ptype}|v|{channel}|{fplay}")
         ],
         [
             InlineKeyboardButton(text=_["S_B_3"], url=f"{SUPPORT_GROUP}"),

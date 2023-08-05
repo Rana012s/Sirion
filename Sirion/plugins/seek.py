@@ -6,7 +6,7 @@ from pyrogram.types import Message
 
 from Sirion import YouTube, app
 from Sirion.misc import db
-from Sirion.core.call import AltCall
+from Sirion.core.call import JavaCall
 from Sirion.utils import AdminRightsCheck, seconds_to_min
 
 # Commands
@@ -58,7 +58,7 @@ async def seek_comm(cli, message: Message, _, chat_id):
         if n == 0:
             return await message.reply_text(_["admin_30"])
     try:
-        await AltCall.seek_stream(
+        await JavaCall.seek_stream(
             chat_id,
             file_path,
             seconds_to_min(to_seek),

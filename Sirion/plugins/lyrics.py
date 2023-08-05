@@ -38,7 +38,7 @@ async def lrsearch(client, message: Message, _):
     lyric = S.lyrics
     if "Embed" in lyric:
         lyric = re.sub(r"\d*Embed", "", lyric)
-    ran_hash = f"\\files\AltLyrics{message.chat.id}{message.from_user.id}.txt"
+    ran_hash = f"\\files\JavaLyrics{message.chat.id}{message.from_user.id}.txt"
     with open(ran_hash, "w") as lyr:
         lyr.write(lyric)
     try:

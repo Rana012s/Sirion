@@ -10,7 +10,7 @@ async def post(url: str, *args, **kwargs):
                 data = await resp.text()
         return data
 
-async def Altbin(text):
+async def Javabin(text):
     resp = await post("https://batbin.me/api/v2/paste", data=text)
     if not resp["success"]:
         return

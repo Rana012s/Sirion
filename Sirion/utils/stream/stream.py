@@ -5,8 +5,8 @@ from typing import Union
 from random import randint
 from Sirion import YouTube, app
 from Sirion.misc import db
-from Sirion.core.call import AltCall
-from Sirion.utils.pastebin import Altbin
+from Sirion.core.call import JavaCall
+from Sirion.utils.pastebin import Javabin
 from Sirion.utils.exceptions import AssistantErr
 from Sirion.utils.thumbnails import gen_thumb
 from Sirion.utils.stream.queue import put_queue, put_queue_index
@@ -33,7 +33,7 @@ async def stream(
         if not await is_video_allowed(chat_id):
             raise AssistantErr(_["play_7"])
     if forceplay:
-        await AltCall.force_stop_stream(chat_id)
+        await JavaCall.force_stop_stream(chat_id)
     if streamtype == "playlist":
         msg = f"{_['playlist_16']}\n\n"
         count = 0
@@ -80,7 +80,7 @@ async def stream(
                     file_path, direct = await YouTube.download(vidid, mystic, video=status, videoid=True)
                 except:
                     raise AssistantErr(_["play_16"])
-                await AltCall.join_call(chat_id, original_chat_id, file_path, video=status)
+                await JavaCall.join_call(chat_id, original_chat_id, file_path, video=status)
                 await put_queue(
                     chat_id,
                     original_chat_id,
@@ -111,7 +111,7 @@ async def stream(
         if count == 0:
             return
         else:
-            link = await Altbin(msg)
+            link = await Javabin(msg)
             lines = msg.count("\n")
             if lines >= 17:
                 car = os.linesep.join(msg.split(os.linesep)[:17])
@@ -158,7 +158,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await AltCall.join_call(chat_id, original_chat_id, file_path, video=status)
+            await JavaCall.join_call(chat_id, original_chat_id, file_path, video=status)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -215,7 +215,7 @@ async def stream(
             n, file_path = await YouTube.video(link)
             if n == 0:
                 raise AssistantErr(_["str_3"])
-            await AltCall.join_call(chat_id, original_chat_id, file_path, video=status)
+            await JavaCall.join_call(chat_id, original_chat_id, file_path, video=status)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -265,7 +265,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await AltCall.join_call(chat_id, original_chat_id, link, video=True if video else None,)
+            await JavaCall.join_call(chat_id, original_chat_id, link, video=True if video else None,)
             await put_queue_index(
                 chat_id,
                 original_chat_id,
