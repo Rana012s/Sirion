@@ -1,8 +1,6 @@
-from config import BANNED_USERS, MUSIC_BOT_NAME
-
-from Sirion import app
+from config import BANNED_USERS
+from Sirion import app, BOT_MENTION
 from Sirion.utils.inlinequery import answer
-
 from youtubesearchpython.__future__ import VideosSearch
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InlineQueryResultPhoto
 
@@ -45,7 +43,7 @@ async def inline_query_handler(client, query):
 🎥 **ᴄʜᴀɴɴᴇʟ:** {channel}
 📎 **ᴄʜᴀɴɴᴇʟ ʟɪɴᴋ:** [ᴠɪsɪᴛ ᴄʜᴀɴɴᴇʟ]({channellink})
 
-💖 **sᴇᴀʀᴄʜ ᴩᴏᴡᴇʀᴇᴅ ʙʏ {MUSIC_BOT_NAME}**"""
+💖 **sᴇᴀʀᴄʜ ᴩᴏᴡᴇʀᴇᴅ ʙʏ {BOT_MENTION}**"""
             answers.append(
                 InlineQueryResultPhoto(
                     photo_url=thumbnail,
