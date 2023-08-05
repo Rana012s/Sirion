@@ -79,3 +79,6 @@ class Userbot(Client):
                 )
                 sys.exit()
             LOGGER(__name__).info(f"Assistant Two Started as {self.two.name}")
+
+
+userbot = Userbot()
