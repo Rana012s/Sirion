@@ -8,9 +8,13 @@ from Sirion.utils.database.memorydatabase import get_active_chats, get_active_vi
 
 __MODULE__ = "active"
 __HELP__ = """
-/activevoice - get active voice chats
-/activevideo - get active video chats
-/activechats - get active chat list
+/activevoice : sʜᴏᴡs ᴛʜᴇ ʟɪsᴛ ᴏғ ᴀᴄᴛɪᴠᴇ ᴠᴏɪᴄᴇᴄʜᴀᴛs ᴏɴ ᴛʜᴇ ʙᴏᴛ.
+
+/activevideo : sʜᴏᴡs ᴛʜᴇ ʟɪsᴛ ᴏғ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏᴄʜᴀᴛs ᴏɴ ᴛʜᴇ ʙᴏᴛ.
+
+/activechats : ɢᴇᴛ ꜱᴛᴀᴛꜱ ᴏꜰ ᴀᴄᴛɪᴠᴇ ᴄʜᴀᴛꜱ.
+
+/autoend [ᴇɴᴀʙʟᴇ|ᴅɪsᴀʙʟᴇ] : ᴇɴᴀʙʟᴇ sᴛʀᴇᴀᴍ ᴀᴜᴛᴏ ᴇɴᴅ ɪғ ɴᴏ ᴏɴᴇ ɪs ʟɪsᴛᴇɴɪɴɢ
 """
 
 ACTIVEVC_COMMAND = get_command("ACTIVEVC_COMMAND")
