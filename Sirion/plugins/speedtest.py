@@ -1,15 +1,11 @@
 import asyncio
 import speedtest
-
 from pyrogram import filters
-
 from strings import get_command
-
 from Sirion import app
 from Sirion.misc import SUDOERS
 
 
-# Commands
 SPEEDTEST_COMMAND = get_command("SPEEDTEST_COMMAND")
 
 
