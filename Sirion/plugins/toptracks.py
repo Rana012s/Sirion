@@ -1,10 +1,7 @@
 import asyncio
-
 from config import BANNED_USERS
-
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup
-
 from Sirion import app
 from Sirion.utils.stream.stream import stream
 from Sirion.utils.decorators.language import languageCB
