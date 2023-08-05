@@ -1,12 +1,9 @@
 import os
 import config
-
 from pyrogram.types import InlineKeyboardMarkup
-
 from typing import Union
 from random import randint
-
-from Sirion import Carbon, YouTube, app
+from Sirion import YouTube, app
 from Sirion.misc import db
 from Sirion.core.call import AltCall
 from Sirion.utils.pastebin import Altbin
