@@ -42,6 +42,10 @@ SUPPORT_GROUP = getenv("SUPPORT_GROUP", "https://t.me/TheDarFrekerz")
 
 HELPABLE = {}
 
+LOAD = []
+
+NO_LOAD = []
+
 BOT_ID = 0
 
 BOT_MENTION = ""
