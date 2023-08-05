@@ -1,6 +1,6 @@
 import asyncio
 from strings import get_string
-from config import PLAYLIST_IMG_URL, PRIVATE_BOT_MODE, adminlist
+from config import PLAYLIST_IMG_URL, adminlist
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import ChatAdminRequired, UserAlreadyParticipant, UserNotParticipant
 from Sirion import YouTube, app, userbot, BOT_MENTION as MUSIC_BOT_NAME
@@ -23,12 +23,6 @@ def PlayWrapper(command):
                 return await message.reply_text(
                     "» ʙᴏᴛ ɪs ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ ғᴏʀ sᴏᴍᴇ ᴛɪᴍᴇ"
                 )
-        if PRIVATE_BOT_MODE == str(True):
-            if not await is_served_private_chat(message.chat.id):
-                await message.reply_text(
-                    "**ᴩʀɪᴠᴀᴛᴇ ᴍᴜsɪᴄ ʙᴏᴛ**\n\nᴏɴʟʏ ғᴏʀ ᴛʜᴇ ᴄʜᴀᴛs ᴀᴜᴛʜᴏʀɪsᴇᴅ ʙʏ ᴛʜᴇ ᴏᴡɴᴇʀ. ʀᴇǫᴜᴇsᴛ ɪɴ ᴍʏ ᴏᴡɴᴇʀ's ᴩᴍ ᴛᴏ ᴀᴜᴛʜᴏʀɪsᴇ ʏᴏᴜʀ ᴄʜᴀᴛ ғᴏʀ ᴜsɪɴɢ ᴍᴇ."
-                )
-                return await app.leave_chat(message.chat.id)
         if await is_commanddelete_on(message.chat.id):
             try:
                 await message.delete()

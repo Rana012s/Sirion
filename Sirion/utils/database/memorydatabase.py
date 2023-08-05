@@ -1,5 +1,13 @@
 import config
 from Sirion.core.mongo import mongodb
+from pytgcalls.types.input_stream.quality import (
+    HighQualityAudio,
+    HighQualityVideo,
+    LowQualityAudio,
+    LowQualityVideo,
+    MediumQualityAudio,
+    MediumQualityVideo,
+)
 
 channeldb = mongodb.cplaymode
 commanddb = mongodb.commands
@@ -292,7 +300,6 @@ async def remove_nonadmin_chat(chat_id: int):
         return
     return await authdb.delete_one({"chat_id": chat_id})
 
-# Video Limit
 
 async def is_video_allowed(chat_idd) -> str:
     chat_id = 123456
@@ -354,7 +361,6 @@ async def add_off(on_off: int):
         return
     return await onoffdb.delete_one({"on_off": on_off})
 
-# Maintenance
 
 async def is_maintenance():
     if not maintenance:
@@ -390,15 +396,6 @@ async def maintenance_on():
     return await onoffdb.insert_one({"on_off": 1})
 
 
-from pytgcalls.types.input_stream.quality import (
-    HighQualityAudio,
-    HighQualityVideo,
-    LowQualityAudio,
-    LowQualityVideo,
-    MediumQualityAudio,
-    MediumQualityVideo,
-)
-
 async def save_audio_bitrate(chat_id: int, bitrate: str):
     audio[chat_id] = bitrate
 
@@ -414,10 +411,7 @@ async def get_aud_bit_name(chat_id: int) -> str:
 async def get_vid_bit_name(chat_id: int) -> str:
     mode = video.get(chat_id)
     if not mode:
-        if config.PRIVATE_BOT_MODE == str(True):
-            return "High"
-        else:
-            return "Medium"
+        return "High"
     return mode
 
 async def get_audio_bitrate(chat_id: int) -> str:
@@ -434,10 +428,7 @@ async def get_audio_bitrate(chat_id: int) -> str:
 async def get_video_bitrate(chat_id: int) -> str:
     mode = video.get(chat_id)
     if not mode:
-        if config.PRIVATE_BOT_MODE == str(True):
-            return HighQualityVideo()
-        else:
-            return MediumQualityVideo()
+        return HighQualityVideo()
     if str(mode) == "High":
         return HighQualityVideo()
     elif str(mode) == "Medium":
