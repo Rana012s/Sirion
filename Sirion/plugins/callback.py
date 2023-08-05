@@ -1,15 +1,10 @@
 import random
 import asyncio
-
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, InlineKeyboardMarkup
-
 from strings import get_string
-from config import (AUTO_DOWNLOADS_CLEAR, BANNED_USERS,
-                    SOUNCLOUD_IMG_URL, STREAM_IMG_URL,
-                    TELEGRAM_AUDIO_URL, TELEGRAM_VIDEO_URL,
-                    adminlist)
-
+from config import (AUTO_DOWNLOADS_CLEAR, BANNED_USERS, STREAM_IMG_URL,
+                    TELEGRAM_AUDIO_URL, TELEGRAM_VIDEO_URL, adminlist)
 from Sirion import YouTube, app, userbot
 from Sirion.core.call import AltCall
 from Sirion.misc import SUDOERS, db
