@@ -1,10 +1,14 @@
 import re
+import os
 import sys
 from os import getenv
 from dotenv import load_dotenv
 from pyrogram import filters
 
-load_dotenv()
+
+if os.path.exists("sample.env"):
+    load_dotenv("sample.env")
+    
 
 API_ID = int(getenv("API_ID"))
 API_HASH = getenv("API_HASH")
