@@ -322,19 +322,9 @@ async def overall_stats(client, CallbackQuery, _):
     free = hdd.free / (1024.0**3)
     free = str(free)
     mod = len(ALL_MODULES)
-    call = pymongodb.command("dbstats")
-    datasize = call["dataSize"] / 1024
-    datasize = str(datasize)
-    storage = call["storageSize"] / 1024
-    objects = call["objects"]
-    collections = call["collections"]
-    status = pymongodb.command("serverStatus")
-    query = status["opcounters"]["query"]
-    mongouptime = status["uptime"] / 86400
-    mongouptime = str(mongouptime)
+    
     served_chats = len(await get_served_chats())
     served_users = len(await get_served_users())
-    total_queries = await get_queries()
     blocked = len(BANNED_USERS)
     sudoers = len(await get_sudoers())
     text = f""" **ʙᴏᴛ's sᴛᴀᴛs ᴀɴᴅ ɪɴғᴏ:**
@@ -362,15 +352,7 @@ async def overall_stats(client, CallbackQuery, _):
 **ᴜsᴇʀs:** {served_users} 
 **ʙʟᴏᴄᴋᴇᴅ:** {blocked} 
 **sᴜᴅᴏᴇʀs:** {sudoers} 
-
-      <b><u>ᴍᴏɴɢᴏ ᴅᴀᴛᴀʙᴀsᴇ</b><u/>
-**ᴜᴩᴛɪᴍᴇ:** {mongouptime[:4]} Days
-**sɪᴢᴇ:** {datasize[:6]} Mb
-**sᴛᴏʀᴀɢᴇ:** {storage} Mb
-**ᴄᴏʟʟᴇᴄᴛɪᴏɴs:** {collections}
-**ᴋᴇʏs:** {objects}
-**ǫᴜᴇʀɪᴇs:** `{query}`
-**ʙᴏᴛ ǫᴜᴇʀɪᴇs:** `{total_queries}`"""
+"""
     med = InputMediaPhoto(media=config.STATS_IMG_URL, caption=text)
     try:
         await CallbackQuery.edit_message_media(media=med, reply_markup=upl)

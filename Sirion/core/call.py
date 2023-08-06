@@ -8,9 +8,8 @@ from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup
 
 from pytgcalls import PyTgCalls, StreamType
-from pytgcalls.types.stream import StreamAudioEnded
-from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
-from pytgcalls.types import JoinedGroupCallParticipant, LeftGroupCallParticipant, Update
+from pytgcalls.types import (StreamAudioEnded, AudioPiped, AudioVideoPiped,
+                    JoinedGroupCallParticipant, LeftGroupCallParticipant, Update)
 from pytgcalls.exceptions import AlreadyJoinedError, NoActiveGroupCall, TelegramServerError
 
 from Sirion.platforms import YouTube

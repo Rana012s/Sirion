@@ -63,7 +63,7 @@ async def init():
         pass
         
     await JavaCall.decorators()
-    LOGGER("Sirion").info("Riruru Music Bot Started Successfully")
+    LOGGER("Sirion").info("Sirion Started Successfully")
     await idle()
 
 

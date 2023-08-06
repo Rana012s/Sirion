@@ -1,6 +1,6 @@
 import config
 from Sirion.core.mongo import mongodb
-from pytgcalls.types.input_stream.quality import (
+from pytgcalls.types import (
     HighQualityAudio,
     HighQualityVideo,
     LowQualityAudio,
