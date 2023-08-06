@@ -2,7 +2,6 @@ import sys
 import config
 from pyrogram import Client
 from Sirion.logging import LOGGER
-from Sirion import BOT_MENTION
 
 
 assistants = []
@@ -20,7 +19,7 @@ class Userbot(Client):
         self.two = Client(
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            name=str(config.STRING1),
+            name=str(config.STRING2),
             no_updates=True,
         )
         
@@ -38,25 +37,17 @@ class Userbot(Client):
             self.one.id = get_me.id
             self.one.mention = get_me.mention
             assistantids.append(get_me.id)
-            if get_me.last_name:
-                self.one.name = get_me.first_name + " " + get_me.last_name
-            else:
-                self.one.name = get_me.first_name
             LOGGER(__name__).info(f"Assistant Started as {self.one.name}")
             try:
-                await self.one.send_message(
-                    config.LOG_GROUP_ID, f"**» {BOT_MENTION} ᴀssɪsᴛᴀɴᴛ ᴏɴᴇ sᴛᴀʀᴛᴇᴅ :**\n\n❄ ɴᴀᴍᴇ : {self.one.name}\n✨ ɪᴅ : `{self.one.id}`\n💫 ᴜsᴇʀɴᴀᴍᴇ : @{self.one.username}"
-                )
+                await self.one.send_message(config.LOG_GROUP_ID, f"**» ᴀssɪsᴛᴀɴᴛ ᴏɴᴇ sᴛᴀʀᴛᴇᴅ :** {self.one.mention}")
             except:
-                LOGGER(__name__).error(
-                    f"Assistant Account 1 has failed to access the log Group"
-                )
+                LOGGER(__name__).error(f"Assistant Account 1 has failed to access the log Group")
                 sys.exit()
 
         if config.STRING2:
             await self.two.start()
             try:
-                await self.one.join_chat("TeamSirion")
+                await self.two.join_chat("TeamSirion")
             except:
                 pass
             assistants.append(2)
@@ -65,18 +56,10 @@ class Userbot(Client):
             self.two.id = get_me.id
             self.two.mention = get_me.mention
             assistantids.append(get_me.id)
-            if get_me.last_name:
-                self.two.name = get_me.first_name + " " + get_me.last_name
-            else:
-                self.two.name = get_me.first_name
             try:
-                await self.two.send_message(
-                    config.LOG_GROUP_ID, f"**» {BOT_MENTION} ᴀssɪsᴛᴀɴᴛ ᴛᴡᴏ sᴛᴀʀᴛᴇᴅ :**\n\n❄ ɴᴀᴍᴇ : {self.two.name}\n✨ ɪᴅ : `{self.two.id}`\n💫 ᴜsᴇʀɴᴀᴍᴇ : @{self.two.username}"
-                )
+                await self.two.send_message(config.LOG_GROUP_ID, f"**» ᴀssɪsᴛᴀɴᴛ ᴛᴡᴏ sᴛᴀʀᴛᴇᴅ :** {self.two.mention}")
             except:
-                LOGGER(__name__).error(
-                    f"Assistant Account 2 has failed to access the log Group"
-                )
+                LOGGER(__name__).error(f"Assistant Account 2 has failed to access the log Group")
                 sys.exit()
             LOGGER(__name__).info(f"Assistant Two Started as {self.two.name}")
 
