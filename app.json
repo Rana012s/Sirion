@@ -35,12 +35,12 @@
         "value": "",
         "required": true
       },
-      "STRING_SESSION": {
+      "STRING1": {
         "description": "A Pyrogram V2 String Session",
         "value": "",
         "required": true
       },
-      "STRING_SESSION2": {
+      "STRING2": {
         "description": "Second Assistant's Pyrogram V2 String",
         "value": "",
         "required": false
