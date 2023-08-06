@@ -20,8 +20,9 @@ class MusicBot(Client):
         get_me = await self.get_me()
         self.id = get_me.id
         a = await self.get_chat_member(LOG_GROUP_ID, self.id)
-            LOGGER(__name__).info(f"MusicBot Started as {self.name}")
+        
         try:
+            LOGGER(__name__).info(f"MusicBot Started as {self.name}")
             await self.send_message(
                 LOG_GROUP_ID, f"**» {BOT_MENTION} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ**"
             )
