@@ -6,7 +6,6 @@ from Sirion.core.call import JavaCall
 from Sirion.core.userbot import userbot
 from Sirion.core.git import git
 from Sirion.core.dir import dirr
-from Sirion.logging import LOGGER
 from Sirion.misc import dbb, heroku, sudo
 from Sirion.platforms import YouTube, Spotify, Telegram
 
@@ -37,9 +36,6 @@ Spotify = Spotify
 Telegram = Telegram
 
 aiohttpsession = ClientSession()
-
-
-LOGGER = LOGGER
 
 HELPABLE = HELPABLE
 
