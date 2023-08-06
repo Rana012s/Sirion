@@ -24,7 +24,7 @@ SONG_DOWNLOAD_DURATION = int(getenv("SONG_DOWNLOAD_DURATION_LIMIT", "180"))
 
 LOG_GROUP_ID = int(getenv("LOG_GROUP_ID"))
 
-OWNER_ID = [int(id) for id in getenv("OWNER_ID", "5180447182 5660459355").split()]
+OWNER_ID = [int(id) for id in getenv("OWNER_ID").split()]
 
 HEROKU_API_KEY = getenv("HEROKU_API_KEY", None)
 
