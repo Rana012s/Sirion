@@ -37,6 +37,10 @@ async def init():
     BOT_MENTION = getme.mention    
     BOT_NAME = getme.first_name + (getme.last_name or "")
     BOT_USERNAME = getme.username
+    try:
+        await app.send_message(config.LOG_GROUP_ID, f"**» {BOT_MENTION} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ**")
+    except:
+        pass
 
     for all_module in ALL_MODULES:
         imported_module = importlib.import_module("Sirion.plugins." + all_module)

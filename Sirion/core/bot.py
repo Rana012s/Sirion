@@ -1,6 +1,5 @@
 import sys
 from config import API_ID, API_HASH, BOT_TOKEN, LOG_GROUP_ID
-from Sirion import BOT_MENTION
 from pyrogram import Client
 from Sirion.logging import LOGGER
 
@@ -23,13 +22,8 @@ class MusicBot(Client):
         
         try:
             LOGGER(__name__).info(f"MusicBot Started as {self.name}")
-            await self.send_message(
-                LOG_GROUP_ID, f"**» {BOT_MENTION} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ**"
-            )
         except:
-            LOGGER(__name__).error(
-                "Bot has failed to access the log Group"
-            )
+            LOGGER(__name__).error("Bot has failed to access the log Group")
             sys.exit()
 
 
