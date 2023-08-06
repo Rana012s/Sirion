@@ -49,18 +49,20 @@ async def _clear_(chat_id):
 class Call(PyTgCalls):
     def __init__(self):
         self.userbot1 = Client(
+            name="JavaCall1",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            name=str(config.STRING1),
+            session_string=str(config.STRING1)
         )
         self.one = PyTgCalls(
             self.userbot1,
             cache_duration=100,
         )
         self.userbot2 = Client(
+            name="JavaCall2",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            name=str(config.STRING2),
+            session_string=str(config.STRING2)
         )
         self.two = PyTgCalls(
             self.userbot2,

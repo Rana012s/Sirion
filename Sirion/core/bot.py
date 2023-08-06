@@ -6,7 +6,6 @@ from Sirion.logging import LOGGER
 
 class MusicBot(Client):
     def __init__(self):
-        LOGGER(__name__).info(f"Starting Bot")
         super().__init__(
             "Sirion",
             api_id=API_ID,
@@ -21,9 +20,9 @@ class MusicBot(Client):
         a = await self.get_chat_member(LOG_GROUP_ID, self.id)
         
         try:
-            LOGGER(__name__).info(f"MusicBot Started as {self.name}")
+            LOGGER(__name__).info(f"MusicBot Started As {self.name}")
         except:
-            LOGGER(__name__).error("Bot has failed to access the log Group")
+            LOGGER(__name__).error("Bot Has Failed To Access The Log Group")
             sys.exit()
 
 
