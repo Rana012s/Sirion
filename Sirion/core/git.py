@@ -23,15 +23,21 @@ def install_req(cmd: str) -> Tuple[str, str, int, int]:
             process.pid,
         )
 
-    return asyncio.get_event_loop().run_until_complete(install_requirements())
+    return asyncio.get_event_loop().run_until_complete(
+        install_requirements()
+    )
 
 
 def git():
+    REPO_LINK = config.UPSTREAM_REPO
     if config.GIT_TOKEN:
-        TEMP_REPO = config.UPSTREAM_REPO.split("https://")[1]
-        GIT_USERNAME = TEMP_REPO.split("/")[1]
-        UPSTREAM_REPO = (f"https://{GIT_USERNAME}:{config.GIT_TOKEN}@{TEMP_REPO}")
-
+        GIT_USERNAME = REPO_LINK.split("com/")[1].split("/")[0]
+        TEMP_REPO = REPO_LINK.split("https://")[1]
+        UPSTREAM_REPO = (
+            f"https://{GIT_USERNAME}:{config.GIT_TOKEN}@{TEMP_REPO}"
+        )
+    else:
+        UPSTREAM_REPO = config.UPSTREAM_REPO
     try:
         repo = Repo()
         LOGGER(__name__).info(f"Git Client Found [VPS DEPLOYER]")
@@ -44,11 +50,16 @@ def git():
         else:
             origin = repo.create_remote("origin", UPSTREAM_REPO)
         origin.fetch()
-        repo.create_head(config.UPSTREAM_BRANCH, origin.refs[config.UPSTREAM_BRANCH],)
-        repo.heads[config.UPSTREAM_BRANCH].set_tracking_branch(origin.refs[config.UPSTREAM_BRANCH])
+        repo.create_head(
+            config.UPSTREAM_BRANCH,
+            origin.refs[config.UPSTREAM_BRANCH],
+        )
+        repo.heads[config.UPSTREAM_BRANCH].set_tracking_branch(
+            origin.refs[config.UPSTREAM_BRANCH]
+        )
         repo.heads[config.UPSTREAM_BRANCH].checkout(True)
         try:
-            repo.create_remote("origin", UPSTREAM_REPO)
+            repo.create_remote("origin", config.UPSTREAM_REPO)
         except BaseException:
             pass
         nrs = repo.remote("origin")
@@ -58,4 +69,4 @@ def git():
         except GitCommandError:
             repo.git.reset("--hard", "FETCH_HEAD")
         install_req("pip3 install --no-cache-dir -r requirements.txt")
-        LOGGER(__name__).info(f"Fetching updates from Sirion...")
+        LOGGER(__name__).info(f"Fetched Updates From Sirion")
