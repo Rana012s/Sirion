@@ -4,7 +4,8 @@ from config import BANNED_USERS
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from youtubesearchpython.__future__ import VideosSearch
-from Sirion import YouTube, app, BOT_NAME
+from Sirion.platforms import YouTube
+from Sirion import app, BOT_NAME
 from Sirion.misc import SUDOERS
 from strings import get_command, get_string
 from Sirion.plugins.playlist import del_plist_msg

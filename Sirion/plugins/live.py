@@ -1,8 +1,8 @@
 from config import BANNED_USERS
-
 from pyrogram import filters
 
-from Sirion import YouTube, app
+from Sirion.platforms import YouTube
+from Sirion import app
 from Sirion.utils.stream.stream import stream
 from Sirion.utils.channelplay import get_channeplayCB
 from Sirion.utils.decorators.language import languageCB

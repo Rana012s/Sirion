@@ -3,7 +3,8 @@ import config
 from pyrogram.types import InlineKeyboardMarkup
 from typing import Union
 from random import randint
-from Sirion import YouTube, app
+from Sirion.platforms import YouTube, Carbon
+from Sirion import app
 from Sirion.misc import db
 from Sirion.core.call import JavaCall
 from Sirion.utils.pastebin import Javabin

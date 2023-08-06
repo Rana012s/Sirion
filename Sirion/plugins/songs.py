@@ -1,21 +1,19 @@
 import os
 import re
-
 import yt_dlp
 from pykeyboard import InlineKeyboard
-
 from strings import get_command
 from config import BANNED_USERS, SONG_DOWNLOAD_DURATION, SONG_DOWNLOAD_DURATION_LIMIT
-
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaAudio, InputMediaVideo, Message
 
-from Sirion import YouTube, app
+from Sirion.platforms import YouTube
+from Sirion import app
 from Sirion.utils.inline.song import song_markup
 from Sirion.utils.formatters import convert_bytes
 from Sirion.utils.decorators.language import language, languageCB
 
-# Command
+
 SONG_COMMAND = get_command("SONG_COMMAND")
 
 

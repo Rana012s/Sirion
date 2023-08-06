@@ -5,7 +5,8 @@ from config import (
     TELEGRAM_VIDEO_URL, TELEGRAM_AUDIO_URL)
 from strings import get_command
 
-from Sirion import YouTube, app
+from Sirion.platforms import YouTube
+from Sirion import app
 from Sirion.misc import db
 from Sirion.core.call import JavaCall
 from Sirion.utils.database import get_loop

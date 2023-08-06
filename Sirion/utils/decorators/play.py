@@ -3,13 +3,13 @@ from strings import get_string
 from config import PLAYLIST_IMG_URL, adminlist
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import ChatAdminRequired, UserAlreadyParticipant, UserNotParticipant
-from Sirion import YouTube, app, userbot, BOT_MENTION as MUSIC_BOT_NAME
+from Sirion import app, userbot, BOT_MENTION as MUSIC_BOT_NAME
+from Sirion.platforms import YouTube, Spotify, Telegram
 from Sirion.misc import SUDOERS
 from Sirion.utils.database import (get_cmode, get_lang,
                                        get_playmode, get_playtype,
                                        is_active_chat,
-                                       is_commanddelete_on,
-                                       is_served_private_chat)
+                                       is_commanddelete_on)
 from Sirion.utils.exceptions import AssistantErr
 from Sirion.utils.database.assistantdatabase import get_assistant
 from Sirion.utils.database.memorydatabase import is_maintenance

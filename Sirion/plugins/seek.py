@@ -1,10 +1,10 @@
 from config import BANNED_USERS
 from strings import get_command
-
 from pyrogram import filters
 from pyrogram.types import Message
 
-from Sirion import YouTube, app
+from Sirion.platforms import YouTube
+from Sirion import app
 from Sirion.misc import db
 from Sirion.core.call import JavaCall
 from Sirion.utils import AdminRightsCheck, seconds_to_min

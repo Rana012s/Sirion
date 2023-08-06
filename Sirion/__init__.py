@@ -7,7 +7,6 @@ from Sirion.core.userbot import userbot
 from Sirion.core.git import git
 from Sirion.core.dir import dirr
 from Sirion.misc import dbb, heroku, sudo
-from Sirion.platforms import YouTube, Spotify, Telegram
 
 
 boot = time.time()
@@ -29,11 +28,6 @@ userbot = userbot
 
 JavaCall = JavaCall
 
-YouTube = YouTube
-
-Spotify = Spotify
-
-Telegram = Telegram
 
 aiohttpsession = ClientSession()
 

@@ -6,7 +6,6 @@ from strings import get_command
 from pyrogram import filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InputMediaPhoto
 from pytgcalls.exceptions import NoActiveGroupCall
-
 from Sirion.core.call import JavaCall
 from Sirion.utils.logger import play_logs
 from Sirion.utils.formatters import formats
@@ -17,7 +16,8 @@ from Sirion.utils.channelplay import get_channeplayCB
 from Sirion.utils.decorators.language import languageCB
 from Sirion.utils import seconds_to_min, time_to_seconds
 from Sirion.utils.inline.playlist import botplaylist_markup
-from Sirion import Spotify, Telegram, YouTube, app
+from Sirion import app
+from Sirion.platforms import YouTube, Spotify, Telegram
 from Sirion.utils.inline.play import livestream_markup, playlist_markup, slider_markup, track_markup
 
 
@@ -227,7 +227,7 @@ async def play_commnd(
                 and not config.SPOTIFY_CLIENT_SECRET
             ):
                 return await mystic.edit_text(
-                    "ᴛʜɪs ʙᴏᴛ ᴄᴀɴ'ᴛ ᴩʟᴀʏ sᴩᴏᴛɪғʏ ᴛʀᴀᴄᴋs ᴀɴᴅ ᴩʟᴀʏʟɪsᴛs, ᴩʟᴇᴀsᴇ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴏᴡɴᴇʀ ᴀɴᴅ ᴀsᴋ ʜɪᴍ ᴛᴏ ᴀᴅᴅ sᴩᴏᴛɪғʏ ᴩʟᴀʏᴇʀ."
+                    "ᴛʜɪs ʙᴏᴛ ᴄᴀɴ'ᴛ ᴩʟᴀʏ sᴩᴏᴛɪғʏ ᴛʀᴀᴄᴋs ᴀɴᴅ ᴩʟᴀʏʟɪsᴛs"
                 )
             if "track" in url:
                 try:
@@ -270,30 +270,6 @@ async def play_commnd(
 
             else:
                 return await mystic.edit_text(_["play_17"])
-
-        elif await Apple.valid(url):
-            if "album" in url:
-                try:
-                    details, track_id = await Apple.track(url)
-                except Exception:
-                    return await mystic.edit_text(_["play_3"])
-                streamtype = "youtube"
-                img = details["thumb"]
-                cap = _["play_11"].format(details["title"], details["duration_min"])
-
-            elif "playlist" in url:
-                spotify = True
-                try:
-                    details, plist_id = await Apple.playlist(url)
-                except Exception:
-                    return await mystic.edit_text(_["play_3"])
-                streamtype = "playlist"
-                plist_type = "apple"
-                cap = _["play_13"].format(message.from_user.first_name)
-                img = url
-
-            else:
-                return await mystic.edit_text(_["play_16"])
 
         else:
             try:
