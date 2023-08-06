@@ -1,16 +1,14 @@
 from config import BANNED_USERS
 from strings import get_command
-
 from pyrogram import filters
 from pyrogram.types import Message
-
 from Sirion import app
 from Sirion.core.call import JavaCall
 from Sirion.utils.database import set_loop
 from Sirion.utils.inline.play import close_keyboard
 from Sirion.utils.decorators import AdminRightsCheck
 
-# Commands
+
 STOP_COMMAND = get_command("STOP_COMMAND")
 
 

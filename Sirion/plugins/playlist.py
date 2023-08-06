@@ -4,8 +4,8 @@ from config import BANNED_USERS, SERVER_PLAYLIST_LIMIT
 from pykeyboard import InlineKeyboard
 from pyrogram import filters
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-
-from Sirion import YouTube, app
+from Sirion.platforms import YouTube
+from Sirion import app
 from Sirion.utils.pastebin import Javabin
 from Sirion.utils.stream.stream import stream
 from Sirion.utils.inline.play import close_keyboard

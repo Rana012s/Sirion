@@ -10,7 +10,8 @@ from pyrogram import filters
 from pyrogram.errors import MessageIdInvalid
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 from pytgcalls.__version__ import __version__ as pytgver
-from Sirion import YouTube, app, BOT_NAME as MUSIC_BOT_NAME
+from Sirion import app, BOT_NAME as MUSIC_BOT_NAME
+from Sirion.platforms import YouTube
 from Sirion.plugins import ALL_MODULES
 from Sirion.core.userbot import assistants
 from Sirion.misc import SUDOERS, pymongodb

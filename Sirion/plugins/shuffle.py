@@ -1,16 +1,13 @@
 from random import shuffle
-
 from pyrogram import filters
 from pyrogram.types import Message
-
 from config import BANNED_USERS
 from strings import get_command
-
 from Sirion import app
 from Sirion.misc import db
 from Sirion.utils.decorators import AdminRightsCheck
 
-# Commands
+
 SHUFFLE_COMMAND = get_command("SHUFFLE_COMMAND")
 
 

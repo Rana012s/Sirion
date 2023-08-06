@@ -1,10 +1,7 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, Message
-from config import (
-    BANNED_USERS, AUTO_DOWNLOADS_CLEAR, STREAM_IMG_URL,
-    TELEGRAM_VIDEO_URL, TELEGRAM_AUDIO_URL)
+from config import BANNED_USERS, AUTO_DOWNLOADS_CLEAR, STREAM_IMG_URL, TELEGRAM_VIDEO_URL, TELEGRAM_AUDIO_URL
 from strings import get_command
-
 from Sirion.platforms import YouTube
 from Sirion import app
 from Sirion.misc import db

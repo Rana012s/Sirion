@@ -1,13 +1,11 @@
 import asyncio
-from config import (
-    BANNED_USERS, TELEGRAM_AUDIO_URL,
-    TELEGRAM_VIDEO_URL, STREAM_IMG_URL
-)
+from config import BANNED_USERS, TELEGRAM_AUDIO_URL, TELEGRAM_VIDEO_URL, STREAM_IMG_URL
 from Sirion import BOT_MENTION as MUSIC_BOT_NAME
 from strings import get_command
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
-from Sirion import app, YouTube
+from Sirion.platforms import YouTube
+from Sirion import app
 from Sirion.misc import db
 from Sirion.utils.thumbnails import gen_thumb
 from Sirion.utils import Javabin, get_channeplayCB

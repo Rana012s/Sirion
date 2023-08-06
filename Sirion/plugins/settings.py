@@ -24,7 +24,6 @@ from Sirion.utils.decorators.admins import ActualAdminCB
 from Sirion.utils.decorators.language import language, languageCB
 
 
-### Command
 SETTINGS_COMMAND = get_command("SETTINGS_COMMAND")
 
 

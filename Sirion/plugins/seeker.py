@@ -1,5 +1,4 @@
 import asyncio
-
 from Sirion.misc import db
 from Sirion.utils.database import get_active_chats, is_music_playing
 
