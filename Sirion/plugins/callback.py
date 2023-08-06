@@ -6,7 +6,8 @@ from strings import get_string
 from config import (AUTO_DOWNLOADS_CLEAR, BANNED_USERS, STREAM_IMG_URL,
                     TELEGRAM_AUDIO_URL, TELEGRAM_VIDEO_URL, adminlist)
 from Sirion.platforms import YouTube
-from Sirion import app, userbot
+from Sirion import app
+from Sirion.core.userbot import userbot
 from Sirion.core.call import JavaCall
 from Sirion.misc import SUDOERS, db
 from Sirion.utils.database import (

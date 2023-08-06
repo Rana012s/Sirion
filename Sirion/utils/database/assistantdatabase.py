@@ -1,7 +1,7 @@
 import random
-
-from Sirion import userbot
+from Sirion.core.userbot import userbot
 from Sirion.core.mongo import mongodb
+
 
 db = mongodb.assistants
 assistantdict = {}
@@ -12,12 +12,6 @@ async def get_client(assistant: int):
         return userbot.one
     elif int(assistant) == 2:
         return userbot.two
-    elif int(assistant) == 3:
-        return userbot.three
-    elif int(assistant) == 4:
-        return userbot.four
-    elif int(assistant) == 5:
-        return userbot.five
 
 
 async def set_assistant(chat_id):
@@ -98,9 +92,4 @@ async def group_assistant(self, chat_id: int) -> int:
         return self.one
     elif int(assis) == 2:
         return self.two
-    elif int(assis) == 3:
-        return self.three
-    elif int(assis) == 4:
-        return self.four
-    elif int(assis) == 5:
-        return self.five
+    

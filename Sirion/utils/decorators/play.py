@@ -3,8 +3,8 @@ from strings import get_string
 from config import PLAYLIST_IMG_URL, adminlist
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.errors import ChatAdminRequired, UserAlreadyParticipant, UserNotParticipant
-from Sirion import app, userbot, BOT_MENTION as MUSIC_BOT_NAME
-from Sirion.platforms import YouTube, Spotify, Telegram
+from Sirion import app, BOT_MENTION as MUSIC_BOT_NAME
+from Sirion.platforms import YouTube
 from Sirion.misc import SUDOERS
 from Sirion.utils.database import (get_cmode, get_lang,
                                        get_playmode, get_playtype,
