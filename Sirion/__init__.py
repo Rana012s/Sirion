@@ -2,9 +2,11 @@ import time
 from aiohttp import ClientSession
 from config import HELPABLE, BOT_ID, BOT_NAME, BOT_USERNAME, BOT_MENTION
 from Sirion.core.bot import app
+from Sirion.core.call import JavaCall
 from Sirion.core.userbot import userbot
 from Sirion.core.git import git
 from Sirion.core.dir import dirr
+from Sirion.logging import LOGGER
 from Sirion.misc import dbb, heroku, sudo
 from Sirion.platforms import YouTube, Spotify, Telegram
 
@@ -26,6 +28,8 @@ app = app
 
 userbot = userbot
 
+JavaCall = JavaCall
+
 YouTube = YouTube
 
 Spotify = Spotify
@@ -34,6 +38,8 @@ Telegram = Telegram
 
 aiohttpsession = ClientSession()
 
+
+LOGGER = LOGGER
 
 HELPABLE = HELPABLE
 
