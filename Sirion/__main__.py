@@ -38,7 +38,7 @@ async def init():
     BOT_NAME = getme.first_name + (getme.last_name or "")
     BOT_USERNAME = getme.username
     try:
-        await app.send_message(config.LOG_GROUP_ID, f"**» {BOT_MENTION} ʙᴏᴛ sᴛᴀʀᴛᴇᴅ**")
+        await app.send_message(config.LOG_GROUP_ID, f"**» ʙᴏᴛ sᴛᴀʀᴛᴇᴅ** : {BOT_MENTION}")
     except:
         pass
 
