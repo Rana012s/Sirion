@@ -25,7 +25,7 @@ y = Genius(
 y.verbose = False
 
 
-@app.on_message(filters.command(LYRICS_COMMAND) & ~filters.edited & ~BANNED_USERS)
+@app.on_message(filters.command(LYRICS_COMMAND) & ~BANNED_USERS)
 @language
 async def lrsearch(client, message: Message, _):
     if len(message.command) < 2:
