@@ -14,7 +14,8 @@ from pytgcalls.types import JoinedGroupCallParticipant, LeftGroupCallParticipant
 from pytgcalls.exceptions import AlreadyJoinedError, NoActiveGroupCall, TelegramServerError
 
 from strings import get_string
-from Sirion import LOGGER, YouTube, app
+from Sirion.logging import LOGGER
+from Sirion import YouTube, app
 from Sirion.misc import db
 from Sirion.utils.database import (add_active_chat,
                                        add_active_video_chat,
