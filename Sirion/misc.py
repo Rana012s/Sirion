@@ -46,9 +46,9 @@ def sudo():
     sudoersdb = pymongodb.sudoers
     sudoers = sudoersdb.find_one({"sudo": "sudo"})
     sudoers = [] if not sudoers else sudoers["sudoers"]
-    SUDOERS.add(OWNER)
+    SUDOERS.add(tuple(OWNER))
     if OWNER not in sudoers:
-        sudoers.append(OWNER)
+        sudoers.append(tuple(OWNER))
         sudoersdb.update_one(
             {"sudo": "sudo"},
             {"$set": {"sudoers": sudoers}},
@@ -67,7 +67,7 @@ def heroku():
             try:
                 Heroku = heroku3.from_key(config.HEROKU_API_KEY)
                 HAPP = Heroku.app(config.HEROKU_APP_NAME)
-                LOGGER(__name__).info("Heroku App Configured Successfully.")
+                LOGGER(__name__).info("Heroku App Configured Successfully")
             except BaseException:
                 LOGGER(__name__).warning(
                     "Please make sure your Heroku API Key and Your App name are configured correctly in the heroku."
