@@ -11,6 +11,7 @@ SUDOERS = filters.user()
 
 HAPP = None
 
+db = {}
 
 def is_heroku():
     return "heroku" in socket.getfqdn()
@@ -35,7 +36,7 @@ XCB = [
 
 def dbb():
     global db
-    db = {}
+    db = db
     LOGGER(__name__).info(f"Database Loaded")
 
 
